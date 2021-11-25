@@ -20,6 +20,7 @@
     "d.C": "cpp",
     "header.C": "cpp",
     "utilities.h": "c",
-    "utilitaries.h": "c"
+    "utilitaries.h": "c",
+    "stdbool.h": "c"
   }
 }

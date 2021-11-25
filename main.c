@@ -3,57 +3,107 @@
 #include <string.h>
 #include <time.h>
 #include <assert.h>
-#include "utilitaries.h"
+#include <stdbool.h>
+#include "useful.h"
 #include "func.h"
 
+#define MAXCHAR 1024
+#define MAX_STR_LEN 256
 
-#define chemin "phone_book.csv"
+#define chemin "annuaire500.csv"
 
 typedef struct data {
-<<<<<<< HEAD
-//int nb;
-=======
     char nom[20];
->>>>>>> a4929cdfec3210a7c1c334693e3d6a3874d50007
+    char prenom[30];
+    char ville[20];
+    char cdePostal[5];
+    char numero[10];
+    char mail[50];
+    char metier[20];
 } DATA ;
 
 void ouverture(void);
 void menu(void);
 void afficher(void);
+int creerstruct(void);
+void afficherstruct(DATA values[]);
+
 
 void afficher(){
-    char ligne[81];
-    char *ptr_chaine ;
-    short int num_ligne = 1 ;
-    FILE *fic;
-    fic = fopen("chemin", "a+");
-    if (fic==NULL)
+    FILE *fp;
+    char row[MAXCHAR];
+
+    fp = fopen("annuaire500.csv","r");
+    printf("ouverture ok");
+    while (feof(fp) != true)
     {
-        printf("ouverture fichier impossible !");
-        exit(0);
+        fgets(row, MAXCHAR, fp);
+        printf("Row: %s", row);
+        printf("oui\n");
     }
-    else {
-        while ( fgets( ligne, 81, fic) != NULL )
-    {
-        printf("\n Ligne %2hd :", num_ligne );
-        num_ligne++ ;
-        ptr_chaine = strtok (ligne, ";");
-    }
-    }
+}
+int creerstruct(){
+    FILE *fp;
     
+
+    fp = fopen("annuaire500.csv","r");
+    printf("ouverture ok");
+    if (!fp){
+        printf("error");
+        return 0;
+    }
+    char buff[MAXCHAR];
+    int row = 0;
+    int col = 0;
+    DATA values[999];
+    int i=0;
+    while (fgets(buff,1024,fp)){
+        col = 0;
+        row++;
+        char *field = strtok("buff", ";");
+        while (field){
+            if(col == 0)
+                strcpy(values[i].prenom, field);
+            if(col == 1)
+                strcpy(values[i].nom, field);
+            if(col == 2)
+                strcpy(values[i].ville, field);
+            if(col == 3)
+                strcpy(values[i].cdePostal, field);
+            if(col == 4)
+                strcpy(values[i].numero, field);
+            if(col == 5)
+                strcpy(values[i].mail, field);
+            if(col == 6)
+                strcpy(values[i].metier, field);
+
+            field = strtok("NULL", ";");
+            col++;
+        }
+        i++;
+    }
+    fclose(fp);
+
+
+    afficherstruct(values);
+
+
+    return 0;
 }
 
-<<<<<<< HEAD
-int main () {
+void afficherstruct(DATA values[]){
+    for (int i=0; i<999; i++){
+        printf("prenom : %s,nom : %s, ville : %s, cdePostal : %s, numero : %s, mail : %s, metier : %s",values[i].prenom,values[i].nom,values[i].ville,values[i].cdePostal,values[i].numero,values[i].mail,values[i].metier);
+    }
+}
+
+void menu () {
+    int c;
     clear();
     FILE* phone_book = fopen(chemin, "w");
     DATA x;
     int option=0;
     clear();
-=======
-void menu(){
-    int c=0;
->>>>>>> a4929cdfec3210a7c1c334693e3d6a3874d50007
     printf("\n\t\t\t   **********-- M E N U --**********");
     printf("\n\n\t\t\t\tQue voulez vous faire ?\n\n");
     printf("\t\n 1 - Ajouter un client");
@@ -86,6 +136,8 @@ void menu(){
                break;
            case 5:
            printf("test");
+           creerstruct();
+
            menu();
                break;
            case 6:
@@ -100,17 +152,12 @@ void menu(){
 
 void ouverture(){
     
+    menu();
 }
-<<<<<<< HEAD
-=======
 
 int main(){
+    printf("main ok");
     ouverture();
     int option=0;
     return 0;
 }
-<<<<<<< HEAD
-    
->>>>>>> a4929cdfec3210a7c1c334693e3d6a3874d50007
-=======
->>>>>>> 9db43c72174d1b288e20a06c7112eabb63255df3
