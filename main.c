@@ -18,20 +18,25 @@ void menu(void);
 void afficher(void);
 
 void afficher(){
-    FILE *fic;
     char ligne[81];
     char *ptr_chaine ;
     short int num_ligne = 1 ;
-    short int data_entier;
-    double data_reel;
-    char data_chaine[11];
-    ouverture();
-    while ( fgets( ligne, 81, fic) != NULL )
+    FILE *fic;
+    fic = fopen("chemin", "a+");
+    if (fic==NULL)
+    {
+        printf("ouverture fichier impossible !");
+        exit(0);
+    }
+    else {
+        while ( fgets( ligne, 81, fic) != NULL )
     {
         printf("\n Ligne %2hd :", num_ligne );
         num_ligne++ ;
         ptr_chaine = strtok (ligne, ";");
-}
+    }
+    }
+    
 }
 
 void menu(){
@@ -81,16 +86,7 @@ void menu(){
 }
 
 void ouverture(){
-    FILE *fic;
-    fic = fopen("chemin", "a+");
-    if (fic==NULL)
-    {
-        printf("ouverture fichier impossible !");
-        exit(0);
-    }
-    else {
-        menu();
-    }
+    
 }
 
 int main(){
