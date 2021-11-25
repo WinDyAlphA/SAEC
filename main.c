@@ -1,11 +1,14 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <assert.h>
+#include <stdbool.h>
 #include "utilities.h"
 #include "func.h"
 
+#define MAXCHAR 1000
 
 #define chemin "phone_book.csv"
 
@@ -18,26 +21,22 @@ void menu(void);
 void afficher(void);
 
 void afficher(){
-    char ligne[81];
-    char *ptr_chaine ;
-    short int num_ligne = 1 ;
-    FILE *fic;
-    fic = fopen("chemin", "a+");
-    if (fic==NULL)
+    FILE *fp;
+    char row[MAXCHAR];
+
+    fp = fopen("annuaire5000.csv","r");
+
+    ;
+
+    while (feof(fp) != true)
     {
-        printf("ouverture fichier impossible !");
-        exit(0);
+        fgets(row, MAXCHAR, fp);
+        printf("Row: %s", row);
     }
-    else {
-        while ( fgets( ligne, 81, fic) != NULL )
-    {
-        printf("\n Ligne %2hd :", num_ligne );
-        num_ligne++ ;
-        ptr_chaine = strtok (ligne, ";");
-    }
-    }
-    
 }
+    
+
+
 
 void menu(){
     int c=0;
@@ -86,7 +85,7 @@ void menu(){
 }
 
 void ouverture(){
-    
+    menu();
 }
 
 int main(){
@@ -94,3 +93,5 @@ int main(){
     int option=0;
     return 0;
 }
+
+
