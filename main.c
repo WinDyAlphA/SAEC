@@ -34,6 +34,3 @@ int main () {
     printf("\t\n 9 - Sauvegarder les données d'un fichier");
     return 0;
 }
-=======
-
->>>>>>> cc8cc464af7f6cc20675ddca2f6343d8cd43523e
