@@ -1,1 +1,1 @@
-ta mere la pute
+
