@@ -36,7 +36,7 @@ void afficher(){
     FILE *fp;
     char row[MAXCHAR];
 
-    fp = fopen("annuaire500.csv","r");
+    fp = fopen("chemin","r");
     printf("ouverture ok");
     while (feof(fp) != true)
     {
@@ -47,11 +47,10 @@ void afficher(){
 }
 int creerstruct(){
     FILE *fp;
-    
 
-    fp = fopen("annuaire500.csv","r");
+    fp = fopen("chemin","r");
     printf("ouverture ok");
-    if (!fp){
+    if (fp == NULL){
         printf("error");
         return 0;
     }
@@ -156,7 +155,6 @@ void ouverture(){
 int main(){
     printf("main ok");
     ouverture();
-    int option=0;
     return 0;
 }
 
