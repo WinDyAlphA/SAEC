@@ -3,21 +3,21 @@
 #include <string.h>
 #include <time.h>
 #include <assert.h>
-#include "utilities.h"
+#include "utilitaries.h"
 #include "func.h"
 
 
 #define chemin "phone_book.csv"
 
 typedef struct data {
-
+//int nb;
 } DATA ;
 
 
 int main () {
     clear();
     FILE* phone_book = fopen(chemin, "w");
-    DATA;
+    DATA x;
     int option=0;
     clear();
     printf("\n\t\t\t   **********-- M E N U --**********");

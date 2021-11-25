@@ -19,6 +19,7 @@
     "string.h": "c",
     "d.C": "cpp",
     "header.C": "cpp",
-    "utilities.h": "c"
+    "utilities.h": "c",
+    "utilitaries.h": "c"
   }
 }

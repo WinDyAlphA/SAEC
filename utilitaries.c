@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "utilities.h"
+#include "utilitaries.h"
 
 void clear () {
     system("cls");

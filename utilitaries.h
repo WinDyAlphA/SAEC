@@ -1,5 +1,6 @@
 #ifndef utilitaries
 #define utilitaries
-#include "func.c"
+#include "utilitaries.c"
+void clear ();
 
 #endif
