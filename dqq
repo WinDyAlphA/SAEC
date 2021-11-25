@@ -1,0 +1,55 @@
+[33mcommit 607ddc262d514e4b2a3c6a3e02d17ffbe5b3ea42[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: rayanemrln <92400806+rayanemrln@users.noreply.github.com>
+Date:   Thu Nov 25 10:33:20 2021 +0100
+
+    Le clear fonctionne
+
+[33mcommit adbbd2d9e448d13c12a92df86e9949fb529c9001[m
+Merge: 5579863 77ee795
+Author: Heraud <heraud@MacBook-Air-de-Heraud.local>
+Date:   Thu Nov 25 09:34:03 2021 +0100
+
+    debug
+
+[33mcommit 5579863a0262725535f6010db555ce8951a07196[m
+Author: Heraud <heraud@MacBook-Air-de-Heraud.local>
+Date:   Thu Nov 25 09:32:44 2021 +0100
+
+    phone_book
+
+[33mcommit 77ee795a1c12d110161c8b44fd4d1f79660b1c77[m
+Merge: ac191a1 cc8cc46
+Author: rayanemrln <92400806+rayanemrln@users.noreply.github.com>
+Date:   Thu Nov 25 09:30:42 2021 +0100
+
+    debug
+
+[33mcommit cc8cc464af7f6cc20675ddca2f6343d8cd43523e[m
+Author: WinDyAlphA <40216866+WinDyAlphA@users.noreply.github.com>
+Date:   Thu Nov 25 09:26:50 2021 +0100
+
+    Update main.c
+
+[33mcommit ac191a174ed8049341179a2f8fa3dfa08bb33f7d[m[33m ([m[1;32mheaders[m[33m)[m
+Author: rayanemrln <92400806+rayanemrln@users.noreply.github.com>
+Date:   Thu Nov 25 09:25:53 2021 +0100
+
+    creation de h et debut de menu
+
+[33mcommit be83ff925ac078f03b7b0481c73a92ee6da1854a[m[33m ([m[1;32mmaster[m[33m)[m
+Author: WinDyAlphA <40216866+WinDyAlphA@users.noreply.github.com>
+Date:   Thu Nov 25 08:20:51 2021 +0100
+
+    Update main.c
+
+[33mcommit ce1f32776b50f9d83f28351499bb9152507b3b50[m
+Author: Heraud <heraud@MacBook-Air-de-Heraud.local>
+Date:   Thu Nov 25 08:11:38 2021 +0100
+
+    second commit
+
+[33mcommit d8cd47e5258576c65a686b33c2de16808f788923[m
+Author: Heraud <heraud@MacBook-Air-de-Heraud.local>
+Date:   Thu Nov 25 08:10:40 2021 +0100
+
+    first commit
