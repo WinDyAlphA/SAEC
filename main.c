@@ -1,24 +1,23 @@
-<<<<<<< HEAD
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <assert.h>
-#include "utilities.h"
+#include "utilitaries.h"
 #include "func.h"
 
 
 #define chemin "phone_book.csv"
 
 typedef struct data {
-
+//int nb;
 } DATA ;
 
 
 int main () {
     clear();
     FILE* phone_book = fopen(chemin, "w");
-    DATA;
+    DATA x;
     int option=0;
     clear();
     printf("\n\t\t\t   **********-- M E N U --**********");
@@ -34,6 +33,3 @@ int main () {
     printf("\t\n 9 - Sauvegarder les données d'un fichier");
     return 0;
 }
-=======
-
->>>>>>> cc8cc464af7f6cc20675ddca2f6343d8cd43523e
