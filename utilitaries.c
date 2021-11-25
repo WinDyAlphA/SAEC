@@ -3,5 +3,5 @@
 #include "utilitaries.h"
 
 void clear () {
-    system("cls");
+    system("clear");
 }
