@@ -98,18 +98,6 @@ int creerstruct(){
     return 0;
 }
 
-void afficherstruct(DATA values[]){
-    for (int i=0; i<999; i++){
-        printf("prenom : %s,nom : %s, ville : %s, cdePostal : %s, numero : %s, mail : %s, metier : %s",values[i].prenom,values[i].nom,values[i].ville,values[i].cdePostal,values[i].numero,values[i].mail,values[i].metier);
-    }
-}
-
-
-    afficherstruct(values);
-
-
-    return 0;
-}
 
 void afficherstruct(DATA values[]){
     for (int i=0; i<999; i++){
