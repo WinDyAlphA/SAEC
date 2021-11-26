@@ -49,8 +49,7 @@ void afficher(){
         }
         printf("\n");
     }
-    
-}
+
 int creerstruct(){
     FILE *fp;
 
@@ -106,6 +105,17 @@ void afficherstruct(DATA values[]){
 }
 
 
+    afficherstruct(values);
+
+
+    return 0;
+}
+
+void afficherstruct(DATA values[]){
+    for (int i=0; i<999; i++){
+        printf("prenom : %s,nom : %s, ville : %s, cdePostal : %s, numero : %s, mail : %s, metier : %s",values[i].prenom,values[i].nom,values[i].ville,values[i].cdePostal,values[i].numero,values[i].mail,values[i].metier);
+    }
+}
 
 void menu(){
     int c=0;
@@ -141,6 +151,8 @@ void menu(){
                break;
            case 5:
            printf("test");
+           creerstruct();
+
            menu();
                break;
            case 6:
@@ -154,12 +166,13 @@ void menu(){
 }
 
 void ouverture(){
+    
     menu();
 }
 
 int main(){
+    printf("main ok");
     ouverture();
-    int option=0;
     return 0;
 }
 
