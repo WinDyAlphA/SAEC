@@ -21,52 +21,13 @@ struct data {
     char numero[10];
     char mail[50];
     char metier[20];
-}
+};
 struct data personne[10];
 
 void ouverture(void);
 void menu(void);
 void afficher(void);
-void creerstruct(void);
-void afficherstruct(void);
-
-void creerstruct(){
-  char temp[MAXCHAR];
-  char r[30];
-  int i =0;
-  char * pointer;
-  FILE *fp;
-  fp = fopen(chemin, "r");
-  if (fp == NULL){
-    printf ("error");
-    exit(1);
-  }
-  while (!feof(fp)){
-    fgets(r, 130, import);
-    pointer = strtok(r,";");
-    while (pointer != NULL){
-      strcpy(temp[i].nom,pointer);
-      pointer = strtok(NULL,";");
-      strcpy(temp[i].prenom,pointer);
-      pointer = strtok(NULL,";");
-      strcpy(temp[i].ville,pointer);
-      pointer = strtok(NULL,";");
-      strcpy(temp[i].cdePostal,pointer);
-      pointer = strtok(NULL,";");
-      strcpy(temp[i].numero,pointer);
-      pointer = strtok(NULL,";");
-      i++;
-    }
-  }
-  fclose(fp);
-  afficherstruct();
-}
-void afficherstruct(){
-  int i=0;
-  for (i=0;i<10;i++){
-    printf("%s_%s_%s",personne[i].nom,personne[i].prenom,personne[i].ville);
-  }
-}
+void ajouter(void);
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -84,11 +45,28 @@ void afficher(){
         while (token != NULL){
             printf("%s", token);
             token = strtok(NULL, ";");
+            printf(" ");  
         }
         printf("\n");
     }
 }
 
+void ajouter(){
+    char tab[MAXCHAR];
+    printf("\nque souhaiter vous ajouter au texte ?\n");
+    fflush (stdin);
+    fgets(tab,MAXCHAR,stdin);
+    FILE *fp;
+    fp = fopen(chemin,"r+");
+    if (fp == NULL){
+        printf("error");
+        exit(1);
+    }
+    fseek(fp, 0, SEEK_END);
+    fprintf(fp,"%s\n",tab);
+    
+    fclose(fp);
+}
 
 void menu(){
     int c=0;
@@ -104,39 +82,45 @@ void menu(){
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
     printf("\t\n 9 - Sauvegarder les données d'un fichier \n");
     scanf("%d",&c);
+    while (c != 9 ){
     switch(c)
        {
            case 1:
            printf("test");
-            menu();
+           ajouter();
+            
                break;
            case 2:
            printf("test");
-           menu();
+           
                break;
            case 3:
            printf("test");
-           menu();
+           
                break;
            case 4:
            afficher();
-           menu();
+           
                break;
            case 5:
            printf("test");
-           creerstruct();
 
-           menu();
+           
                break;
            case 6:
            printf("test");
-           menu();
+           
                break;
            case 9:
                break;
        default: printf("error");
        }
+       ouverture();
+     }
 }
+
+// faire une fonction qui compte les ligne et faire 
+// tab[nligne].nom[pos]=str
 
 void ouverture(){
     
