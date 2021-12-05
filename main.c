@@ -5,8 +5,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
-#include "utilities.h"
-#include "func.h"
+
 
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
@@ -28,6 +27,7 @@ void ouverture(void);
 void menu(void);
 void afficher(void);
 void ajouter(void);
+void ajouterfpf(void);
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -45,7 +45,7 @@ void afficher(){
         while (token != NULL){
             printf("%s", token);
             token = strtok(NULL, ";");
-            printf(" ");  
+            printf(" ");
         }
         printf("\n");
     }
@@ -68,6 +68,28 @@ void ajouter(){
     fclose(fp);
 }
 
+void ajouterfpf(){
+  char nom[3] = {'n','o','m'};
+  char prenom[6] = {'p','r','e','n','o','m'};
+  char ville[5] = {'v','i','l','l','e'};
+  char cdePostal[9] = {'c','d','e','P','o','s','t','a','l'};
+  char numero[6] = {'n','u','m','e','r','o'};
+  char mail[4] = {'m','a','i','l'};
+  char metier[6] = {'m','e','t','i','e','r'};
+  char *tab[7] = { nom, prenom, ville, cdePostal, numero, mail, metier};
+  char *add[7];
+  for (int i=0; i<7; i++){
+    printf("veuillez inserer le %s de la personne :\n",tab[i]);
+    fflush(stdin);
+    fgets(tab[i],50,stdin);
+  }
+  for (int i=0; i<7; i++){
+    printf("%s : \n",tab[i]);
+  }
+
+
+}
+
 void menu(){
     int c=0;
     printf("\n\t\t\t   **********-- M E N U --**********");
@@ -82,15 +104,16 @@ void menu(){
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
     printf("\t\n 9 - Sauvegarder les données d'un fichier \n");
     scanf("%d",&c);
+
     while (c != 9 ){
     switch(c)
        {
            case 1:
            printf("test");
            ajouter();
-            
                break;
            case 2:
+           ajouterfpf();
            printf("test");
            
                break;
@@ -119,7 +142,7 @@ void menu(){
      }
 }
 
-// faire une fonction qui compte les ligne et faire 
+// faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 
 void ouverture(){
