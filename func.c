@@ -13,3 +13,8 @@
 #define MAX_STR_LEN 256
 
 #define chemin "annuaire500.csv"
+
+void clear () {
+    system("clear");
+}
+
