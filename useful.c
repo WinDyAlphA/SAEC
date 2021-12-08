@@ -8,7 +8,7 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "phone_book.csv"
+#define chemin "annuaire500.csv"
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -113,4 +113,8 @@ void ajouterfpf(){
   for (int i=0; i<7; i++){
     printf("%s : \n",tab[i]);
   }
+}
+
+void affichermenu () {
+    menu();
 }
