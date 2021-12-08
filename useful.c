@@ -3,8 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <assert.h>
-#include "utilities.h"
-#include "func.h"
+#include "useful.h"
 
 
 #define chemin "phone_book.csv"
@@ -91,10 +90,6 @@ void menu(){
                break;
        default: printf("error");
        }
-}
-
-void ouverture(){
-    menu();
 }
 
 int main(){

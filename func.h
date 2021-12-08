@@ -1,5 +1,5 @@
-#ifndef utilitaries
-#define utilitaries
+#ifndef func
+#define func
 #include "func.c"
 
 #endif
