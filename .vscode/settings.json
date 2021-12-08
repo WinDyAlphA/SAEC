@@ -14,13 +14,5 @@
   "C_Cpp_Runner.cppStandard": "",
   "C_Cpp_Runner.excludeSearch": [],
   "C_Cpp_Runner.enableWarnings": true,
-  "C_Cpp_Runner.warningsAsError": false,
-  "files.associations": {
-    "string.h": "c",
-    "d.C": "cpp",
-    "header.C": "cpp",
-    "utilities.h": "c",
-    "utilitaries.h": "c",
-    "stdbool.h": "c"
-  }
+  "C_Cpp_Runner.warningsAsError": false
 }

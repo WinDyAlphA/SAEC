@@ -1,7 +1,5 @@
-#ifndef utilitaries
-
-#define utilitaries
+#ifndef useful
+#define useful
 #include "useful.c"
-void clear (void);
 
 #endif
