@@ -24,11 +24,6 @@ struct data {
 };
 struct data personne[10];
 
-void menu();
-void afficher();
-void ajouter();
-void ajouterfpf();
-
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 
@@ -37,5 +32,3 @@ int main(){
     menu();
     return 0;
 }
-
-

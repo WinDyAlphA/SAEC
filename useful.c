@@ -10,6 +10,14 @@
 
 #define chemin "annuaire500.csv"
 
+void afficher(void);
+void menu(void);
+void ajouter(void);
+void ajouterfpf(void);
+void affichermenu(void);
+void sift(int *tree, int node, int n);
+void heap_sort(int *tree, int n);
+
 void afficher(){
    FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
@@ -117,4 +125,36 @@ void ajouterfpf(){
 
 void affichermenu () {
     menu();
+}
+
+void sift(int *tree, int node, int n) {
+   int k = node;
+   int j = 2*k;
+   while (j <= n) {
+       if (tree[j]<tree[j+1]) {
+           j++;
+       }
+       if (tree[k]<tree[j]) {
+           int tmp=tree[k];
+           tree[k]=tree[j];
+           tree[j]=tmp;
+           k=j;
+           j=2*k;
+       }
+       else {
+           j=n+1;
+       }
+   }
+}
+
+void heap_sort (int *tree, int length) {
+    for (int i= length/2 ; i>1; i--) {
+        sift(tree, i, length);
+    }
+    for (int i= length; i>2; i--) {
+        int tmp = tree[i];
+        tree[i] = tree[1];
+        tree[1] = tmp;
+        sift(tree, 1, i-1);
+    }
 }
