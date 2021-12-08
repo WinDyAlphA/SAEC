@@ -4,6 +4,7 @@
 #include <time.h>
 #include <assert.h>
 #include "useful.h"
+#include "func.h"
 
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
@@ -135,9 +136,7 @@ void sift(int *tree, int node, int n) {
            j++;
        }
        if (tree[k]<tree[j]) {
-           int tmp=tree[k];
-           tree[k]=tree[j];
-           tree[j]=tmp;
+           permute(tree, k, j);
            k=j;
            j=2*k;
        }
@@ -152,9 +151,7 @@ void heap_sort (int *tree, int length) {
         sift(tree, i, length);
     }
     for (int i= length; i>2; i--) {
-        int tmp = tree[i];
-        tree[i] = tree[1];
-        tree[1] = tmp;
+        permute(tree, i, 1);
         sift(tree, 1, i-1);
     }
 }
