@@ -4,6 +4,8 @@
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
+#include "useful.h"
+#include "func.h"
 
 
 #define MAXCHAR 1024
@@ -22,18 +24,14 @@ struct data {
 };
 struct data personne[10];
 
-void ouverture(void);
-void menu(void);
-void afficher(void);
-void ajouter(void);
-void ajouterfpf(void);
+
 
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 
 int main(){
-    printf("main ok");
-    ouverture();
+    clear();
+    menu();
     return 0;
 }
 

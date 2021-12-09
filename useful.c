@@ -8,7 +8,14 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "phone_book.csv"
+#define chemin "annuaire500.csv"
+
+void afficher(void);
+void menu(void);
+void ajouter(char *tab);
+void ajouterfpf(void);
+void affichermenu(void);
+void concat(char *str1, char *str2, char *end);
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -49,11 +56,10 @@ void menu(){
     switch(c)
        {
            case 1:
-           printf("test");
             menu();
                break;
            case 2:
-           printf("test");
+           ajouterfpf();
            menu();
                break;
            case 3:
@@ -78,8 +84,7 @@ void menu(){
        }
 }
 
-void ajouter(){
-    char tab[MAXCHAR];
+void ajouter(char *tab){
     printf("\nque souhaiter vous ajouter au texte ?\n");
     fflush (stdin);
     fgets(tab,MAXCHAR,stdin);
@@ -94,23 +99,43 @@ void ajouter(){
     
     fclose(fp);
 }
+void concat(char *str1, char *str2, char *end){
+  int i=0;
+  i = strlen(str1);
+  str1[i-1] = ';';
+  end = strcat(str1,str2);
+
+}
 
 void ajouterfpf(){
-  char nom[3] = {'n','o','m'};
-  char prenom[6] = {'p','r','e','n','o','m'};
-  char ville[5] = {'v','i','l','l','e'};
-  char cdePostal[9] = {'c','d','e','P','o','s','t','a','l'};
-  char numero[6] = {'n','u','m','e','r','o'};
-  char mail[4] = {'m','a','i','l'};
-  char metier[6] = {'m','e','t','i','e','r'};
+  int i=0;
+  char nom[50] = {'n','o','m'};
+  char prenom[50] = {'p','r','e','n','o','m'};
+  char ville[50] = {'v','i','l','l','e'};
+  char cdePostal[50] = {'c','d','e','P','o','s','t','a','l'};
+  char numero[50] = {'n','u','m','e','r','o'};
+  char mail[50] = {'m','a','i','l'};
+  char metier[50] = {'m','e','t','i','e','r'};
   char *tab[7] = { nom, prenom, ville, cdePostal, numero, mail, metier};
+  char temp[350];
   char *add[7];
   for (int i=0; i<7; i++){
     printf("veuillez inserer le %s de la personne :\n",tab[i]);
     fflush(stdin);
-    fgets(tab[i],50,stdin);
+    fgets(tab[i],350,stdin);
   }
-  for (int i=0; i<7; i++){
-    printf("%s : \n",tab[i]);
-  }
+  concat(nom,prenom,temp);
+  concat(nom,ville,temp);
+  concat(nom,cdePostal,temp);
+  concat(nom,numero,temp);
+  concat(nom,mail,temp);
+  concat(nom,metier,temp);
+
+  printf("%s : \n",tab[0]);
+  ajouter(tab[0]);
+  
+}
+
+void affichermenu(){
+    menu();
 }
