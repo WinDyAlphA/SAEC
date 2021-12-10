@@ -1,0 +1,36 @@
+Vous pouvez utiliser ce programme de deux manières différentes :
+
+1) Executer à partir de la console :
+    Rendez vous sur le terminal dans le répertoire contenant le fichier, puis écrivez la commande de la sorte
+
+    ./prog instruction_1 instruction_2 instruction_3 [...]
+
+    Voici la liste des instructions possibles :
+        
+        add : ajouter une personne
+
+        delete : supprimer une personne
+
+        print : afficher l'ensemble des personnes et de leurs informations
+
+        modify : modifier les informations d'une personne
+
+        research : rechercher une personne par une de ses coordonnées 
+
+        sort : afficher le repértoire trié en fonction trier du nom de famille de chaque personne
+
+    Imaginons par exemple que vous souhaitiez ajouter un utilisateur, puis supprimer un autre, puis modifier les
+    informations d'un, puis de nouveau en ajouter un, il vous faudra rentrer :
+
+    ./prog add delete modify add
+
+
+2) Executer à partir du lancement de l'executable : 
+
+    Dans le cas ou vous ne souhaitez pas passer par le console pour executer le programme, lancez le directement.
+    Un menu vous sera alors proposé, chaque instruction étant représentée par un chiffre.
+    
+    Rentrez alors le chiffre en question pour lancer l'instruction voulue. 
+
+    Le menu réapparaitra à chaque fin d'instruction, vous pourrez ainsi réeffectuer une action. Lorsque vous aurez
+    terminé, rentrez '#' à la place pour quitter le programme.

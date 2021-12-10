@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <assert.h>
+#include <stdbool.h>
+#include "func.c"
 #include "useful.h"
-#include "func.h"
 
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
@@ -16,8 +19,10 @@ void menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
-void sift(int *tree, int node, int n);
-void heap_sort(int *tree, int n);
+void sift(int [], int, int);
+void heap_sort(int [], int);
+int srch_dicho(int [], int);
+int srch_seq(int [], int);
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -50,7 +55,7 @@ void menu(){
     printf("\t\n 3 - Supprimer un client");
     printf("\t\n 4 - Afficher les donnees-client");
     printf("\t\n 5 - Rechercher une caracterisque client");
-    printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune ");
+    printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune");
     printf("\t\n 7 - Rechercher ou afficher les données d'un client ");
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
     printf("\t\n 9 - Sauvegarder les données d'un fichier \n");
@@ -128,15 +133,15 @@ void affichermenu () {
     menu();
 }
 
-void sift(int *tree, int node, int n) {
+void sift(int tab[], int node, int n) {
    int k = node;
    int j = 2*k;
    while (j <= n) {
-       if (tree[j]<tree[j+1]) {
+       if (tab[j]<tab[j+1]) {
            j++;
        }
-       if (tree[k]<tree[j]) {
-           permute(tree, k, j);
+       if (tab[k]<tab[j]) {
+           permute(tab, k, j);
            k=j;
            j=2*k;
        }
@@ -146,12 +151,41 @@ void sift(int *tree, int node, int n) {
    }
 }
 
-void heap_sort (int *tree, int length) {
+void heap_sort (int tab[], int length) {
     for (int i= length/2 ; i>1; i--) {
-        sift(tree, i, length);
+        sift(tab, i, length);
     }
     for (int i= length; i>2; i--) {
-        permute(tree, i, 1);
-        sift(tree, 1, i-1);
+        permute(tab, i, 1);
+        sift(tab, 1, i-1);
     }
 }
+
+int srch_dicho(int tab[], int x) {
+    int left = 0;
+    int right = length(tab);
+    int mid = (left + right) /2;
+    while (left <= right) {
+        if (tab[mid]==x) {
+            return mid;
+        }
+        if (tab[mid]>x) {
+            right = mid-1;
+        }
+        if (tab[mid]<x) {
+            left=mid+1;
+        }
+    }
+    return -1;
+}
+
+int srch_seq(int tab[], int x) {
+    for (int i; i < length(tab); i++) {
+        if (tab[i]==x) {
+            int pos = i;
+            return pos;
+        }
+    }
+    return -1;
+}
+
