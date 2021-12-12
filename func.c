@@ -14,7 +14,16 @@
 
 #define chemin "annuaire500.csv"
 
+void clear(void);
+void permute(int [], int, int);
+
 void clear () {
-    system("clear");
+    system("cls");
+}
+
+void permute(int tab[], int i, int j) {
+    int tmp = tab[j];
+    tab[j] = tab[i];
+    tab[i] = tmp;
 }
 
