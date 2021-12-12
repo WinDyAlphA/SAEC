@@ -3,7 +3,7 @@
 #include "useful.c"
 
 void afficher(void);
-void menu(void);
+int menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);

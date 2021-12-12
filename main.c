@@ -14,7 +14,7 @@
 #define chemin "annuaire500.csv"
 
 void afficher(void);
-void menu(void);
+int menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
@@ -63,9 +63,7 @@ int main(int argc, char **argv) {
     }
     else {
         int tab;
-        clear();
         menu();
         return 0;
     }
-
 }

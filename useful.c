@@ -6,7 +6,7 @@
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
-#include "func.c"
+#include "func.h"
 #include "useful.h"
 
 #define MAXCHAR 1024
@@ -15,7 +15,7 @@
 #define chemin "annuaire500.csv"
 
 void afficher(void);
-void menu(void);
+int menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
@@ -46,49 +46,62 @@ void afficher(){
     }
 }
 
-void menu(){
-    int c=0;
+int menu(){
+    clear();
+    char c='0';
     printf("\n\t\t\t   **********-- M E N U --**********");
-    printf("\n\n\t\t\t\tQue voulez vous faire ?\n\n");
+    printf("\n\t\t\t\tQue voulez vous faire ?\n");
     printf("\t\n 1 - Ajouter un client");
     printf("\t\n 2 - Modifier les donnees d'un client");
     printf("\t\n 3 - Supprimer un client");
     printf("\t\n 4 - Afficher les donnees-client");
     printf("\t\n 5 - Rechercher une caracterisque client");
     printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune");
-    printf("\t\n 7 - Rechercher ou afficher les données d'un client ");
+    printf("\t\n 7 - Rechercher ou afficher les donnees d'un client ");
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
-    printf("\t\n 9 - Sauvegarder les données d'un fichier \n");
-    scanf("%d",&c);
+    printf("\t\n 9 - Sauvegarder les donnees d'un fichier \n");
+    scanf("%s",&c);
     switch(c)
        {
-           case 1:
+           case '1':
            printf("test");
             menu();
                break;
-           case 2:
+           case '2':
            printf("test");
            menu();
                break;
-           case 3:
+           case '3':
            printf("test");
            menu();
                break;
-           case 4:
+           case '4':
            afficher();
            menu();
                break;
-           case 5:
+           case '5':
            printf("test");
            menu();
                break;
-           case 6:
+           case '6':
            printf("test");
            menu();
                break;
-           case 9:
-               break;
-       default: printf("error");
+            case '7':
+            printf("test");
+            menu();
+            case '8':
+            printf("test");
+            menu();
+           case '9':
+            printf("test");
+            menu();
+           case '#':
+            printf("Sortie du programme.");
+            return 0;
+           default:
+            printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini.");
+            menu();
        }
 }
 
@@ -163,7 +176,7 @@ void heap_sort (int tab[], int length) {
 
 int srch_dicho(int tab[], int x) {
     int left = 0;
-    int right = length(tab);
+    int right = MAX_STR_LEN;
     int mid = (left + right) /2;
     while (left <= right) {
         if (tab[mid]==x) {
@@ -180,7 +193,7 @@ int srch_dicho(int tab[], int x) {
 }
 
 int srch_seq(int tab[], int x) {
-    for (int i; i < length(tab); i++) {
+    for (int i; i < MAX_STR_LEN; i++) {
         if (tab[i]==x) {
             int pos = i;
             return pos;
@@ -189,3 +202,26 @@ int srch_seq(int tab[], int x) {
     return -1;
 }
 
+int add(){
+
+}
+
+int modify () {
+
+}
+
+int delete(){
+
+}
+
+int sort(){
+
+}
+
+int research() {
+
+}
+
+int print(){
+    
+}
