@@ -23,7 +23,7 @@ void sift(int [], int, int);
 void heap_sort(int [], int);
 int srch_dicho(int [], int);
 int srch_seq(int [], int);
-void structure(void);
+/*void structure(void);*/
 
 struct data {
     char prenom[30];
@@ -35,11 +35,56 @@ struct data {
     char metier[20];
 };
 struct personne;
+/*
+void structure(){
+    char *buf = malloc(MAX_STR_LEN);
+    char *tmp;
+    FILE *fp = fopen(chemin,"r");
+    char row[MAXCHAR];
 
-personne tab[500];
+    if  (fp == NULL){
+        perror("error");
+        exit(1);
+    }
+    int i = 0;
+    while (fgets(buf, 255, fp) != NULL)
+    {
+        if ((strlen(buf)>0) && (buf[strlen (buf) - 1] == 'n'))
+            buf[strlen (buf) - 1] = '';       
+
+        tmp = strtok(buf, ";");
+        personne[i].prenom = atoi(tmp);
+
+        tmp = strtok(NULL, ";");
+        personne[i].nom = tmp;
+
+        tmp = strtok(NULL, ";");
+        personne[i].ville = tmp;
+
+        tmp = strtok(NULL, ";");
+        personne[i].cdePostal = tmp;
+
+        tmp = strtok(NULL, ";");
+        personne[i].numero = tmp;
+
+        tmp = strtok(NULL, ";");
+        personne[i].mail = tmp;
+
+        tmp = strtok(NULL, ";");
+        personne[i].metier = tmp;
+
+        //tempBook.ID = atoi(buf);
+        printf("index i= %i  ID: %i, %s, %s, %s, %s, %s, %s, %s n",i, personne[i].prenom , personne[i].nom, personne[i].ville , personne[i].cdePostal, personne[i].numero, personne[i].mail, personne[i].metier);
+
+        i++;
+    }
+    //free(buf);
+    fclose(fp);
+    return 0;
+} */
 
 void afficher(){
-   FILE *fp = fopen(chemin,"r");
+    FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 
     if  (fp == NULL){
@@ -52,14 +97,12 @@ void afficher(){
         token = strtok(row, ";");
 
         while (token != NULL){
-            printf("%s", token);
-            fgets(token,50)
             token = strtok(NULL, ";");
             printf(" ");
         }
         printf("\n");
     }
-    fclose();
+    fclose(fp);
 }
 
 void menu(){
