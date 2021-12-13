@@ -23,6 +23,20 @@ void sift(int [], int, int);
 void heap_sort(int [], int);
 int srch_dicho(int [], int);
 int srch_seq(int [], int);
+void structure(void);
+
+struct data {
+    char prenom[30];
+    char nom[30];
+    char ville[20];
+    char cdePostal[5];
+    char numero[10];
+    char mail[50];
+    char metier[20];
+};
+struct personne;
+
+personne tab[500];
 
 void afficher(){
    FILE *fp = fopen(chemin,"r");
@@ -39,11 +53,13 @@ void afficher(){
 
         while (token != NULL){
             printf("%s", token);
+            fgets(token,50)
             token = strtok(NULL, ";");
             printf(" ");
         }
         printf("\n");
     }
+    fclose();
 }
 
 void menu(){
