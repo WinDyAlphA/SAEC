@@ -12,7 +12,7 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire5000.csv"
+#define chemin "annuaire500.csv"
 
 void afficher(void);
 void menu(void);
@@ -79,7 +79,6 @@ void structure(){
             switch(i){
               case 0:
               strcpy(datarecord[j].nom,token);
-
               break;
               case 1:
               strcpy(datarecord[j].prenom,token);
