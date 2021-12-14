@@ -62,6 +62,9 @@ void structure(){
   struct data datarecord[500];
   int i =0;
   int j=0;
+}
+
+void afficher(){
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 

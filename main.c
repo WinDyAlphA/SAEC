@@ -26,6 +26,17 @@ int srch_seq(int [], int);
 void clear(void);
 void permute(int [], int, int);
 
+struct data {
+    char *prenom[30];
+    char *nom[30];
+    char *ville[20];
+    char *codePostal[5];
+    char *numero[10];
+    char *mail[50];
+    char *metier[20];
+};
+struct personne;
+
 
 
 // faire une fonction qui compte les ligne et faire
@@ -33,7 +44,7 @@ void permute(int [], int, int);
 
 int main(int argc, char **argv) {
     if (argc != 1) {
-        for (int i = 2; i < argc; i++) {
+        for (int i = 2; i <= argc; i++) {
             switch (argv[i][0]) {
                 case 'a' : //add
                     break;
@@ -56,4 +67,10 @@ int main(int argc, char **argv) {
         menu();
         return 0;
     }
+}
+
+void associate(FILE *fp, struct data x) {
+    int i;
+    while (fopen(fp) = !feof)
+        fscanf(fp ,"%s;%s;%s;%s;%s;%s;%s", &x.prenom[], &x.nom[], &x.ville[], &x.numero[], &x.mail[], &x.metier[]);
 }
