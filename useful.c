@@ -18,27 +18,25 @@ void afficher(void);
 void menu(void);
 void ajouter(void);
 void add(void);
-void affichermenu(void);
 void sift(int [], int, int);
 void heap_sort(int [], int);
 int srch_dicho(int [], int);
 int srch_seq(int [], int);
 /*void structure(void);*/
 
-struct data {
+typedef struct data {
     char prenom[30];
     char nom[30];
     char ville[20];
     char cdePostal[5];
-    char numero[10];
+    char numero[20];
     char mail[50];
     char metier[20];
-};
-struct personne;
-/*
-void structure(){
-    char *buf = malloc(MAX_STR_LEN);
-    char *tmp;
+}PERSONNE;
+
+
+
+void afficher(){
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 
@@ -46,42 +44,19 @@ void structure(){
         perror("error");
         exit(1);
     }
-    int i = 0;
-    while (fgets(buf, 255, fp) != NULL)
-    {
-        if ((strlen(buf)>0) && (buf[strlen (buf) - 1] == 'n'))
-            buf[strlen (buf) - 1] = '';       
 
-        tmp = strtok(buf, ";");
-        personne[i].prenom = atoi(tmp);
+    while (fgets(row, sizeof(row), fp)){
+        char *token;
+        token = strtok(row, ";");
 
-        tmp = strtok(NULL, ";");
-        personne[i].nom = tmp;
-
-        tmp = strtok(NULL, ";");
-        personne[i].ville = tmp;
-
-        tmp = strtok(NULL, ";");
-        personne[i].cdePostal = tmp;
-
-        tmp = strtok(NULL, ";");
-        personne[i].numero = tmp;
-
-        tmp = strtok(NULL, ";");
-        personne[i].mail = tmp;
-
-        tmp = strtok(NULL, ";");
-        personne[i].metier = tmp;
-
-        //tempBook.ID = atoi(buf);
-        printf("index i= %i  ID: %i, %s, %s, %s, %s, %s, %s, %s n",i, personne[i].prenom , personne[i].nom, personne[i].ville , personne[i].cdePostal, personne[i].numero, personne[i].mail, personne[i].metier);
-
-        i++;
+        while (token != NULL){
+            printf("%s", token);
+            token = strtok(NULL, ";");
+            printf(" ");
+        }
+        printf("\n");
     }
-    //free(buf);
-    fclose(fp);
-    return 0;
-} */
+}
 
 int error_fopen(FILE *fp) {
     int a;
@@ -93,33 +68,51 @@ int error_fopen(FILE *fp) {
         a=1;
     }
     return a;
-}
+/*void structure(){
+  struct data datarecord[500];
+  int i =0;
+  int j=0;
 
-int error_fclose(FILE *fp) {
-    int a;
-    if (fclose(fp)==EOF) {
-        a=0;
-        printf("Erreur à la fermeture du fichier.");
-    }
-    else {
-        a=1;
-    }
-return a;
-}
-
-void afficher(){
     while (fgets(row, sizeof(row), fp)){
         char *token;
         token = strtok(row, ";");
-
+        j++;
         while (token != NULL){
-            token = strtok(NULL, ";");
+            
+
+            switch(i){
+              case 0:
+              strcpy(datarecord[j].nom,token);
+              break;
+              case 1:
+              strcpy(datarecord[j].prenom,token);
+              break;
+              case 2:
+              strcpy(datarecord[j].ville,token);
+              break;
+              case 3:
+              strcpy(datarecord[j].cdePostal,token);
+              break;
+              case 4:
+              strcpy(datarecord[j].numero,token);
+              break;
+              case 5:
+              strcpy(datarecord[j].mail,token);
+              break;
+              case 6:
+              strcpy(datarecord[j].metier,token);
+              break;
+            }
             printf(" ");
+            i++;
+
+            token = strtok(NULL, ";");
+            printf(" l'element %d est : %s \n",i, token);
         }
+        i=0;
         printf("\n");
     }
-    fclose(fp);
-}
+}*/
 
 void menu(){
     clear();
@@ -139,15 +132,16 @@ void menu(){
     switch(c)
        {
            case '1':
-           add();
-           printf("test");
-            menu();
-               break;
+             add();
+            printf("test");
+             menu();
+            break;
            case '2':
            printf("test");
            menu();
                break;
            case '3':
+           structure();
            printf("test");
            menu();
                break;

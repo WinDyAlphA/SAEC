@@ -18,7 +18,7 @@ void clear(void);
 void permute(int [], int, int);
 
 void clear () {
-    system("cls");
+    system("clear");
 }
 
 void permute(int tab[], int i, int j) {
