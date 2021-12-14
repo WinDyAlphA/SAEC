@@ -12,13 +12,13 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire500.csv"
+#define chemin "annuaire5000.csv"
 
 void clear(void);
 void permute(int [], int, int);
 
 void clear () {
-    system("cls");
+    system("clear");
 }
 
 void permute(int tab[], int i, int j) {
