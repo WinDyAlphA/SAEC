@@ -83,6 +83,18 @@ void structure(){
     return 0;
 } */
 
+int error(FILE *fp) {
+    int a;
+    if (fp == NULL) {
+        a=0;
+        printf("Erreur fichier.");
+    }
+    else {
+        a=1;
+    }
+    return a;
+}
+
 void afficher(){
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
