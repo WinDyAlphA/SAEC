@@ -11,7 +11,7 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire500.csv"
+#define chemin "phone_book500.csv"
 
 void afficher(void);
 void menu(void);
@@ -26,23 +26,23 @@ int srch_seq(int [], int);
 void clear(void);
 void permute(int [], int, int);
 
-struct data {
-    char *prenom[30];
-    char *nom[30];
-    char *ville[20];
-    char *codePostal[5];
-    char *numero[10];
-    char *mail[50];
-    char *metier[20];
+typedef struct data {
+    char prenom[30];
+    char nom[30];
+    char ville[20];
+    char codePostal[5];
+    char numero[10];
+    char mail[50];
+    char metier[20];
 };
-struct personne;
-
-
 
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 
 int main(int argc, char **argv) {
+    FILE *fp = fopen(chemin,"a+");
+    struct data x;
+    error_fopen(fp);
     if (argc != 1) {
         for (int i = 2; i <= argc; i++) {
             switch (argv[i][0]) {
@@ -51,12 +51,17 @@ int main(int argc, char **argv) {
                 case 'd' : //delete
                     break;
                 case 'm' : //modify
+                    research(fp);
+                    //modify(x, fp);
                     break;
                 case 'p' : //print
+                    //associate();
+                    print();
                     break;
                 case 'r' : //research
                     break;
                 case 's' : //sort
+
                     break;
             }
         }
@@ -65,12 +70,7 @@ int main(int argc, char **argv) {
     else {
         int tab;
         menu();
+        error_fclose(fp);
         return 0;
     }
-}
-
-void associate(FILE *fp, struct data x) {
-    int i;
-    while (fopen(fp) = !feof)
-        fscanf(fp ,"%s;%s;%s;%s;%s;%s;%s", &x.prenom[], &x.nom[], &x.ville[], &x.numero[], &x.mail[], &x.metier[]);
 }

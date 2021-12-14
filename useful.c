@@ -12,7 +12,7 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire500.csv"
+#define chemin "phone_book500.csv"
 
 void afficher(void);
 void menu(void);
@@ -83,7 +83,7 @@ void structure(){
     return 0;
 } */
 
-int error(FILE *fp) {
+int error_fopen(FILE *fp) {
     int a;
     if (fp == NULL) {
         a=0;
@@ -95,15 +95,19 @@ int error(FILE *fp) {
     return a;
 }
 
-void afficher(){
-    FILE *fp = fopen(chemin,"r");
-    char row[MAXCHAR];
-
-    if  (fp == NULL){
-        perror("error");
-        exit(1);
+int error_fclose(FILE *fp) {
+    int a;
+    if (fclose(fp)==EOF) {
+        a=0;
+        printf("Erreur à la fermeture du fichier.");
     }
+    else {
+        a=1;
+    }
+return a;
+}
 
+void afficher(){
     while (fgets(row, sizeof(row), fp)){
         char *token;
         token = strtok(row, ";");
@@ -197,10 +201,6 @@ void add(){
   }
 }
 
-void affichermenu () {
-    menu();
-}
-
 void sift(int tab[], int node, int n) {
    int k = node;
    int j = 2*k;
@@ -257,3 +257,24 @@ int srch_seq(int tab[], int x) {
     return -1;
 }
 
+void associate(FILE *fp, struct data x) {
+    int i=0;
+    char line[MAX_STR_LEN];
+    while (fgets(line, MAX_STR_LEN, fp) != NULL) {
+        sscanf(line, "%s;%s;%s;%s;%s;%s;%s", &x.prenom[i], &x.nom, &x.ville, &x.numero, &x.mail, &x.metier);
+        i++;
+    }
+}
+
+void modify(struct data x, FILE *fp) {
+    printf("Quelle information de cet utilisateur voulez vous modifier? ");
+    char *buffer;
+    scanf("%s", &buffer);
+}
+
+void research(FILE *fp){
+    printf("Rentrez la / les informations que vous connaissez, si vous en connaissez plusieures rentrez les en les séparant par un espace.\n");
+    exemple("ex : prenom, nom, mail");
+    char *buffer;
+    fgets(buffer,MAX_STR_LEN,stdin);
+}
