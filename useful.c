@@ -24,16 +24,18 @@ int srch_dicho(int [], int);
 int srch_seq(int [], int);
 void structure(void);
 
+
 typedef struct data {
     char prenom[30];
     char nom[30];
     char ville[20];
-    char cdePostal[5];
+    char codePostal[6];
     char numero[20];
     char mail[50];
     char metier[20];
-}PERSONNE;
+}pers;
 
+char *tab[500];
 
 
 void afficher(){
@@ -60,11 +62,10 @@ void afficher(){
 
 void structure(){
   struct data datarecord[500];
-  int i =0;
+  
   int j=0;
-}
 
-void afficher(){
+
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 
@@ -72,42 +73,52 @@ void afficher(){
         perror("error");
         exit(1);
     }
+    int i =0;
     while (fgets(row, sizeof(row), fp)){
         char *token;
         token = strtok(row, ";");
-        j++;
+        strcpy(datarecord[j].prenom,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
         while (token != NULL){
-            
-
-            switch(i){
-              case 0:
-              strcpy(datarecord[j].nom,token);
-              break;
-              case 1:
-              strcpy(datarecord[j].prenom,token);
-              break;
-              case 2:
-              strcpy(datarecord[j].ville,token);
-              break;
-              case 3:
-              strcpy(datarecord[j].cdePostal,token);
-              break;
-              case 4:
-              strcpy(datarecord[j].numero,token);
-              break;
-              case 5:
-              strcpy(datarecord[j].mail,token);
-              break;
-              case 6:
-              strcpy(datarecord[j].metier,token);
-              break;
+            if (i==0){
+              
             }
-            printf(" ");
-            i++;
+            if (i==1){
+              strcpy(datarecord[j].nom,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
+            if (i==2){
+              strcpy(datarecord[j].ville,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
+            if (i==3){
+              strcpy(datarecord[j].codePostal,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
+            if (i==4){
+              strcpy(datarecord[j].numero,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
+            if (i==5){
+              strcpy(datarecord[j].mail,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
+            if (i==6){
+              strcpy(datarecord[j].metier,token);
+              printf(" l'element %d \n",i);
+              printf("%s\n", token);
+            }
 
             token = strtok(NULL, ";");
-            printf(" l'element %d est : %s \n",i, token);
+            i++;
         }
+        j++;
         i=0;
         printf("\n");
     }
@@ -134,28 +145,22 @@ void menu(){
            add();
            printf("test");
             menu();
-               break;
            case '2':
            printf("test");
            menu();
-               break;
            case '3':
-           structure();
            printf("test");
            menu();
-               break;
            case '4':
            afficher();
            menu();
-               break;
            case '5':
+           structure();
            printf("test");
            menu();
-               break;
            case '6':
            printf("test");
            menu();
-               break;
             case '7':
             printf("test");
             menu();

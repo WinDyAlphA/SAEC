@@ -26,16 +26,6 @@ int srch_seq(int [], int);
 void clear(void);
 void permute(int [], int, int);
 
-struct data {
-    char *prenom[30];
-    char *nom[30];
-    char *ville[20];
-    char *codePostal[5];
-    char *numero[10];
-    char *mail[50];
-    char *metier[20];
-};
-struct personne;
 
 
 
@@ -69,8 +59,9 @@ int main(int argc, char **argv) {
     }
 }
 
-void associate(FILE *fp, struct data x) {
+/*void associate(FILE *fp, struct data x) {
     int i;
     while (fopen(fp) = !feof)
         fscanf(fp ,"%s;%s;%s;%s;%s;%s;%s", &x.prenom[], &x.nom[], &x.ville[], &x.numero[], &x.mail[], &x.metier[]);
 }
+*/
