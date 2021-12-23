@@ -11,23 +11,23 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire500.csv"
+#define chemin "annuaire5000.csv"
 
 void afficher(void);
 void menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
-void sift(int [], int, int);
-void heap_sort(int [], int);
-int srch_dicho(int [], int);
-int srch_seq(int [], int);
+/*void sift(int, int);
+void heap_sort(int);
+int srch_dicho(int);
+int srch_seq(int);
+
+
+void permute(int [], int, int);
+*/
 
 void clear(void);
-void permute(int [], int, int);
-
-
-
 
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str

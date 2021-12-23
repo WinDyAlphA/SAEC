@@ -3,7 +3,8 @@
 #include "func.c"
 
 void clear(void);
-void permute(int [], int, int);
-int length(int []);
+/*
+void permute(int *, int *);*/
+int length();
 
 #endif

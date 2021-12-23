@@ -12,16 +12,16 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "annuaire500.csv"
+#define chemin "annuaire5000.csv"
 
 void afficher(void);
 void menu(void);
 void ajouter(void);
 void add(void);
-void sift(int [], int, int);
-void heap_sort(int [], int);
-int srch_dicho(int [], int);
-int srch_seq(int [], int);
+/*void sift(int, int);
+void heap_sort(int);
+int srch_dicho(int);
+int srch_seq(int); */
 void structure(void);
 
 
@@ -57,13 +57,24 @@ void afficher(){
             printf(" ");
         }
         printf("\n");
-    }
+  }
 }
-
 void structure(){
   struct data datarecord[500];
-  
+  struct data *pdata = NULL;
+
+  pdata = datarecord;
+  int i =0;
   int j=0;
+  char firstname[500][30];
+  char *pprenom[500];
+  char *pnom[500];
+  char *pville[500];
+  char *pcdePostal[500];
+  char *pnum[500];
+  char *pmail[500];
+  char *pjob[500];
+  char **pers[7] = {pprenom,pnom,pville,pcdePostal,pnum,pmail,pjob};
 
 
     FILE *fp = fopen(chemin,"r");
@@ -73,57 +84,63 @@ void structure(){
         perror("error");
         exit(1);
     }
-    int i =0;
     while (fgets(row, sizeof(row), fp)){
+        
         char *token;
         token = strtok(row, ";");
-        strcpy(datarecord[j].prenom,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+        
         while (token != NULL){
             if (i==0){
-              
+              strcpy(datarecord[j].prenom,token);
+                pprenom[j] = token;
+            
             }
             if (i==1){
               strcpy(datarecord[j].nom,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pnom[j] = token;
             }
             if (i==2){
               strcpy(datarecord[j].ville,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pville[j] = token;
             }
             if (i==3){
               strcpy(datarecord[j].codePostal,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pcdePostal[j] = token;
             }
             if (i==4){
               strcpy(datarecord[j].numero,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pnum[j] = token;
             }
             if (i==5){
               strcpy(datarecord[j].mail,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pmail[j] = token;
             }
             if (i==6){
               strcpy(datarecord[j].metier,token);
-              printf(" l'element %d \n",i);
-              printf("%s\n", token);
+              pjob[j] = token;
             }
 
             token = strtok(NULL, ";");
             i++;
         }
-        j++;
         i=0;
         printf("\n");
+        printf("\n");
+        printf("%s",datarecord[2].nom);
+        printf("\n");
+        printf("\n");
+        j++;
+        
+        
+            
     }
+    for(int z=0;z<5;z++){
+        printf("%s %s %s %s \n",pdata->nom,pdata->prenom,pdata->ville,pdata->numero);
+        pdata++;
+    }
+    
+  
 }
-
 void menu(){
     clear();
     char c='0';
@@ -198,8 +215,8 @@ void add(){
     printf("%s : \n",tab[i]);
   }
 }
-
-void sift(int tab[], int node, int n) {
+/*
+void sift(int node, int n) {
    int k = node;
    int j = 2*k;
    while (j <= n) {
@@ -207,7 +224,7 @@ void sift(int tab[], int node, int n) {
            j++;
        }
        if (tab[k]<tab[j]) {
-           permute(tab, k, j);
+           permute(k, j);
            k=j;
            j=2*k;
        }
@@ -217,41 +234,42 @@ void sift(int tab[], int node, int n) {
    }
 }
 
-void heap_sort (int tab[], int length) {
+void heap_sort (int length) {
     for (int i= length/2 ; i>1; i--) {
-        sift(tab, i, length);
+        sift(tableau, i, length);
     }
     for (int i= length; i>2; i--) {
-        permute(tab, i, 1);
-        sift(tab, 1, i-1);
+        permute(tableau, i, 1);
+        sift(&tableau[1], &tableau[i-1]);
     }
 }
 
-int srch_dicho(int tab[], int x) {
+int srch_dicho(int x) {
+  char *pt = &x;
     int left = 0;
     int right = MAX_STR_LEN;
     int mid = (left + right) /2;
     while (left <= right) {
-        if (tab[mid]==x) {
+        if (tableau[mid]==pt) {
             return mid;
         }
-        if (tab[mid]>x) {
+        if (tableau[mid]>pt) {
             right = mid-1;
         }
-        if (tab[mid]<x) {
+        if (tableau[mid]<pt) {
             left=mid+1;
         }
     }
     return -1;
 }
 
-int srch_seq(int tab[], int x) {
+int srch_seq(int x) {
     for (int i; i < MAX_STR_LEN; i++) {
-        if (tab[i]==x) {
+        if (tableau[i]==x) {
             int pos = i;
             return pos;
         }
     }
     return -1;
 }
-
+*/
