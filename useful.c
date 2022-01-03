@@ -68,6 +68,7 @@ int error_fopen(FILE *fp) {
         a=1;
     }
     return a;
+}
 /*void structure(){
   struct data datarecord[500];
   int i =0;
@@ -129,34 +130,27 @@ void menu(){
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
     printf("\t\n 9 - Sauvegarder les donnees d'un fichier \n");
     scanf("%s",&c);
-    switch(c)
-       {
-           case '1':
-             add();
+    switch(c) {
+            case: '1':
+            add();
             printf("test");
              menu();
-            break;
            case '2':
            printf("test");
            menu();
-               break;
            case '3':
            structure();
            printf("test");
            menu();
-               break;
            case '4':
            afficher();
            menu();
-               break;
            case '5':
            printf("test");
            menu();
-               break;
            case '6':
            printf("test");
            menu();
-               break;
             case '7':
             printf("test");
             menu();
@@ -242,7 +236,7 @@ int srch_dicho(int tab[], int x) {
 }
 
 int srch_seq(int tab[], int x) {
-    for (int i; i < MAX_STR_LEN; i++) {
+    for (int i = 0; i < MAX_STR_LEN; i++) {
         if (tab[i]==x) {
             int pos = i;
             return pos;
@@ -267,8 +261,16 @@ void modify(struct data x, FILE *fp) {
 }
 
 void research(FILE *fp){
+    struct data x;
     printf("Rentrez la / les informations que vous connaissez, si vous en connaissez plusieures rentrez les en les séparant par un espace.\n");
     exemple("ex : prenom, nom, mail");
     char *buffer;
     fgets(buffer,MAX_STR_LEN,stdin);
+    int i = 0;
+    while (sscanf(buffer,"%s,")!= NULL)){
+        i++;
+    }
+    
+    
+
 }
