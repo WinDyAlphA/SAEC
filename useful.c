@@ -11,6 +11,7 @@
 
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
+#define PERSONNE 5
 
 #define chemin "annuaire5000.csv"
 
@@ -20,8 +21,9 @@ void ajouter(void);
 void add(void);
 /*void sift(int, int);
 void heap_sort(int);
-int srch_dicho(int);
-int srch_seq(int); */
+int srch_dicho(int);*/
+void srch_seq(char *x,struct data *datarecord); 
+void srch(void);
 void structure(void);
 
 
@@ -35,7 +37,7 @@ typedef struct data {
     char metier[20];
 }pers;
 
-char *tab[500];
+char *tab[PERSONNE];
 
 
 void afficher(){
@@ -60,20 +62,19 @@ void afficher(){
   }
 }
 void structure(){
-  struct data datarecord[500];
+  struct data datarecord[PERSONNE];
   struct data *pdata = NULL;
-
   pdata = datarecord;
   int i =0;
   int j=0;
-  char firstname[500][30];
-  char *pprenom[500];
-  char *pnom[500];
-  char *pville[500];
-  char *pcdePostal[500];
-  char *pnum[500];
-  char *pmail[500];
-  char *pjob[500];
+  char firstname[PERSONNE][30];
+  char *pprenom[PERSONNE];
+  char *pnom[PERSONNE];
+  char *pville[PERSONNE];
+  char *pcdePostal[PERSONNE];
+  char *pnum[PERSONNE];
+  char *pmail[PERSONNE];
+  char *pjob[PERSONNE];
   char **pers[7] = {pprenom,pnom,pville,pcdePostal,pnum,pmail,pjob};
 
 
@@ -142,6 +143,7 @@ void structure(){
   
 }
 void menu(){
+    structure();
     clear();
     char c='0';
     printf("\n\t\t\t   **********-- M E N U --**********");
@@ -169,10 +171,10 @@ void menu(){
            printf("test");
            menu();
            case '4':
-           afficher();
+           
            menu();
            case '5':
-           structure();
+           srch();
            printf("test");
            menu();
            case '6':
@@ -216,6 +218,7 @@ void add(){
   }
 }
 /*
+
 void sift(int node, int n) {
    int k = node;
    int j = 2*k;
@@ -262,14 +265,27 @@ int srch_dicho(int x) {
     }
     return -1;
 }
+*/
+void srch(){
+  printf("Par quel élément souhaitez vous Rechercher ?");
+  int c = 0;
+  printf("par numero\n");
+  printf("par nom\n");
+  printf("par e-mail\n");
+  char *x;
+    fgets(x,12,stdin);
+      srch_seq(x,struct data *datarecord);
 
-int srch_seq(int x) {
-    for (int i; i < MAX_STR_LEN; i++) {
-        if (tableau[i]==x) {
-            int pos = i;
-            return pos;
+
+}
+
+void srch_seq(char *x,struct data *datarecord) {
+
+      for (int y=0;y<PERSONNE;y++){
+        for (int i; i < 12; i++) {
+            if (datarecord[y].numero[i]==x[i]) {
+                printf("%c",datarecord[y].nom[i]);
+              }
+            }
         }
     }
-    return -1;
-}
-*/
