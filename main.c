@@ -11,30 +11,23 @@
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 
-#define chemin "phone_book500.csv"
+#define chemin "annuaire5000.csv"
 
 void afficher(void);
 void menu(void);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
-void sift(int [], int, int);
-void heap_sort(int [], int);
-int srch_dicho(int [], int);
-int srch_seq(int [], int);
+/*void sift(int, int);
+void heap_sort(int);
+int srch_dicho(int);
+int srch_seq(int);
+
+
+void permute(int [], int, int);
+*/
 
 void clear(void);
-void permute(int [], int, int);
-
-typedef struct data {
-    char prenom[30];
-    char nom[30];
-    char ville[20];
-    char codePostal[5];
-    char numero[10];
-    char mail[50];
-    char metier[20];
-};
 
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
@@ -74,3 +67,10 @@ int main(int argc, char **argv) {
         return 0;
     }
 }
+
+/*void associate(FILE *fp, struct data x) {
+    int i;
+    while (fopen(fp) = !feof)
+        fscanf(fp ,"%s;%s;%s;%s;%s;%s;%s", &x.prenom[], &x.nom[], &x.ville[], &x.numero[], &x.mail[], &x.metier[]);
+}
+*/
