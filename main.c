@@ -33,6 +33,9 @@ void clear(void);
 // tab[nligne].nom[pos]=str
 
 int main(int argc, char **argv) {
+    FILE *fp = fopen(chemin,"a+");
+    struct data x;
+    error_fopen(fp);
     if (argc != 1) {
         for (int i = 2; i <= argc; i++) {
             switch (argv[i][0]) {
@@ -41,12 +44,17 @@ int main(int argc, char **argv) {
                 case 'd' : //delete
                     break;
                 case 'm' : //modify
+                    research(fp);
+                    //modify(x, fp);
                     break;
                 case 'p' : //print
+                    //associate();
+                    print();
                     break;
                 case 'r' : //research
                     break;
                 case 's' : //sort
+
                     break;
             }
         }
@@ -55,6 +63,7 @@ int main(int argc, char **argv) {
     else {
         int tab;
         menu();
+        error_fclose(fp);
         return 0;
     }
 }

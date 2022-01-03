@@ -81,10 +81,6 @@ void structure(){
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 
-    if  (fp == NULL){
-        perror("error");
-        exit(1);
-    }
     while (fgets(row, sizeof(row), fp)){
         
         char *token;
