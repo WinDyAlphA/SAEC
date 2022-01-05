@@ -14,10 +14,6 @@
 
 #include <stdbool.h>
 
-#include "func.h"
-
-#include "useful.h"
-
 #define MAXCHAR 1024
 #define MAX_STR_LEN 256
 #define PERSONNE 5
@@ -28,16 +24,16 @@ void afficher(void);
 void menu(void);
 void ajouter(void);
 void add(void);
+void afich(void);
+void structure(void);
 /*void sift(int, int);
 void heap_sort(int);
 int srch_dicho(int);*/
-/*void srch_seq(char * x, struct data * datarecord);*/
-void finds(struct data * p[]);
+/*void srch_seq(char *x,struct data *datarecord); */
+struct data;
 int espace(char row[MAXCHAR]);
 
-void structure(void);
-
-typedef struct data {
+struct data {
   char prenom[30];
   char nom[30];
   char ville[20];
@@ -45,10 +41,10 @@ typedef struct data {
   char numero[20];
   char mail[50];
   char metier[20];
-}
-pers;
+};
 
 char * tab[PERSONNE];
+void finds(struct data * p[]);
 
 void afficher() {
   FILE * fp = fopen(chemin, "r");
@@ -71,7 +67,6 @@ void afficher() {
     printf("\n");
   }
 }
-
 void structure() {
   struct data datarecord[500];
 
@@ -167,11 +162,11 @@ int espace(char row[MAXCHAR]) {
     }
 
   }
-  return 1;
+  return 0;
 }
 
 void menu() {
-  clear();
+
   char c = '0';
   printf("\n\t\t\t   **********-- M E N U --**********");
   printf("\n\t\t\t\tQue voulez vous faire ?\n");
@@ -201,6 +196,7 @@ void menu() {
     menu();
   case '5':
     structure();
+    /*srch();*/
     printf("test");
     menu();
   case '6':
@@ -266,6 +262,58 @@ void add() {
   }
 }
 /*
+void search(FILE* fp){
+  int nbr;
+  printf("Combien d'informations voulez vous rechercher (7 infos disponibles au total) :");
+  scanf("%d",&nbr);
+  char* information[7];
+  printf("Quelles sont les informations que vous possédez?");
+  switch(nbr) {
+    case 1 :
+      sscanf(information,"%s", information[0]);
+      break;
+    case 2 :
+      sscanf(information,"%s,%s", information[0], information[1]);
+    case 3 :
+      sscanf(information,"%s,%s,%s", information[0], information[1], information[2]);
+    case 4 :
+      sscanf(information,"%s,%s,%s,%s", information[0], information[1], information[2], information[3]);
+    case 5 :
+      sscanf(information,"%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4]);
+    case 6 :
+      sscanf(information,"%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5]);
+    case 7 :
+      sscanf(information,"%s,%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5], information[6]);
+  }
+
+
+
+}
+
+void ferrors(FILE* fp){
+  if (fopen(fp)==NULL) {
+    printf("Erreur d'ouverture fichier.");
+    return 0;
+  }
+  else{
+    printf("Fichier ouvert avec succès.");
+    return 1;
+  }
+}
+
+void ferrorsclose(FILE *fp){
+  if (fopen(fp)!=EOF) {
+    printf("Fermeture du fichier réussie.");
+    return 1;
+  }
+  else {
+    printf("Erreur de fermeture du fichier");
+    return 0;
+  }
+}
+
+*/
+/*
 
 void sift(int node, int n) {
    int k = node;
@@ -314,25 +362,27 @@ int srch_dicho(int x) {
     return -1;
 }
 */
-void srch() {
+/*void srch(){
   printf("Par quel élément souhaitez vous Rechercher ?");
   int c = 0;
   printf("par numero\n");
   printf("par nom\n");
   printf("par e-mail\n");
-  char * x;
-  fgets(x, 12, stdin);
-  srch_seq(x, struct data * datarecord);
+  char *x;
+    fgets(x,12,stdin);
+      srch_seq(x,struct data *datarecord);
+
 
 }
 
-/*void srch_seq(char * x, struct data * datarecord) {
+void srch_seq(char *x,struct data *datarecord) {
 
-  for (int y = 0; y < PERSONNE; y++) {
-    for (int i; i < 12; i++) {
-      if (datarecord[y].numero[i] == x[i]) {
-        printf("%c", datarecord[y].nom[i]);
-      }
+      for (int y=0;y<PERSONNE;y++){
+        for (int i; i < 12; i++) {
+            if (datarecord[y].numero[i]==x[i]) {
+                printf("%c",datarecord[y].nom[i]);
+              }
+            }
+        }
     }
-  }
-} */
+*/
