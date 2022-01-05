@@ -63,70 +63,89 @@ void afficher(){
 }
 void structure(){
   struct data datarecord[500];
-    struct data *pdata = &datarecord[0];
-    pdata = datarecord;
+  struct data *pdata = NULL;
+  pdata = datarecord;
   int i =0;
   int j=0;
-    FILE *fp = fopen(chemin,"r");
-    char row[MAXCHAR];
+  FILE *fp = fopen(chemin,"r");
+  char row[MAXCHAR];
 
     if  (fp == NULL){
         perror("error");
         exit(1);
     }
     while (fgets(row, sizeof(row), fp)){
-        
-        char *token;
-        token = strtok(row, ";");
-        
-        
-        while (token != NULL){
-            switch(i){
-                case 0:
-                    strcpy(datarecord[j].prenom,token);
-                    break;
-                case 1:
-                    strcpy(datarecord[j].nom,token);
-                    break;
-                case 2:
-                    strcpy(datarecord[j].ville,token);
-                    break;
-                case 3:
-                    strcpy(datarecord[j].codePostal,token);
-                    break;
-                case 4:
-                    strcpy(datarecord[j].numero,token);
-                    break;
-                case 5:
-                    strcpy(datarecord[j].mail,token);
-                    break;
-                case 6:
-                    strcpy(datarecord[j].metier,token);
-                    break;
-            }
-            token = strtok(NULL, ";");
-            i++;
-        }
-        i=0;
+      
+      char *token;
+      token = strtok(row, ";");
+      
+      
+      while (token != NULL){
+          switch(i){
+              case 0:
+                  strcpy(datarecord[j].prenom,token);
+                  break;
+              case 1:
+                  strcpy(datarecord[j].nom,token);
+                  break;
+              case 2:
+                  strcpy(datarecord[j].ville,token);
+                  break;
+              case 3:
+                  strcpy(datarecord[j].codePostal,token);
+                  break;
+              case 4:
+                  strcpy(datarecord[j].numero,token);
+                  break;
+              case 5:
+                  strcpy(datarecord[j].mail,token);
+                  break;
+              case 6:
+                  strcpy(datarecord[j].metier,token);
+                  break;
+          }
+          token = strtok(NULL, ";");
+          i++;
+      }
+      i=0;
 
-                printf("\n");
-                printf("\n");
-                printf("%s",datarecord[2].nom);
-                printf("\n");
-                printf("\n");
-                j++;
+      printf("\n");
+      printf("\n");
+      printf("%s",datarecord[2].nom);
+      printf("\n");
+      printf("\n");
+      j++;
                 
                 
                     
-            }
+    }
+    
+    for (int b=0;b<4;b++){
+      (*p)[b]=&(pdata[b]);
+    }
+    for(int z=0;z<4;z++){
+        
+       printf("%s %s %s %s \n",(*pdata).nom,pdata->prenom,pdata->ville,pdata->numero);
+       printf("%s %s %s %s \n",(*p)[z]->nom,(*p)[z]->prenom,(*p)[z]->ville,(*p)[z]->numero);
+       pdata++;
+    }
+    finds(*p);
             
-            for(int z=0;z<500;z++){
-                printf("%s %s %s %s \n",(*pdata).nom,pdata->prenom,pdata->ville,pdata->numero);
-                pdata++;
-            }
-    
-    
 }
+
+
+
+void finds(struct data *p[]){
+    for(int z=0;z<4;z++){
+        printf("%s %s %s %s \n",(*p)[z].nom,(*p)[z].prenom,(*p)[z].ville,(*p)[z].numero);
+    }
+}
+
+
+
+
+    
+
 void menu(){
     structure();
     clear();
