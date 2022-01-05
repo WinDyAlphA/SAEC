@@ -66,14 +66,6 @@ void structure(){
   pdata = datarecord;
   int i =0;
   int j=0;
-  char firstname[500][30];
-  char *pprenom[500];
-  char *pnom[500];
-  char *pville[500];
-  char *pcdePostal[500];
-  char *pnum[500];
-  char *pmail[500];
-  char *pjob[500];
   char **pers[7] = {pprenom,pnom,pville,pcdePostal,pnum,pmail,pjob};
 
 
@@ -88,32 +80,25 @@ void structure(){
         while (token != NULL){
             if (i==0){
               strcpy(datarecord[j].prenom,token);
-                pprenom[j] = token;
             
             }
             if (i==1){
               strcpy(datarecord[j].nom,token);
-              pnom[j] = token;
             }
             if (i==2){
               strcpy(datarecord[j].ville,token);
-              pville[j] = token;
             }
             if (i==3){
               strcpy(datarecord[j].codePostal,token);
-              pcdePostal[j] = token;
             }
             if (i==4){
               strcpy(datarecord[j].numero,token);
-              pnum[j] = token;
             }
             if (i==5){
               strcpy(datarecord[j].mail,token);
-              pmail[j] = token;
             }
             if (i==6){
               strcpy(datarecord[j].metier,token);
-              pjob[j] = token;
             }
 
             token = strtok(NULL, ";");
@@ -125,10 +110,7 @@ void structure(){
         printf("%s",datarecord[2].nom);
         printf("\n");
         printf("\n");
-        j++;
-        
-        
-            
+        j++;        
     }
     for(int z=0;z<5;z++){
         printf("%s %s %s %s \n",pdata->nom,pdata->prenom,pdata->ville,pdata->numero);
@@ -211,6 +193,58 @@ void add(){
     printf("%s : \n",tab[i]);
   }
 }
+
+void search(FILE* fp){
+  int nbr;
+  printf("Combien d'informations voulez vous rechercher (7 infos disponibles au total) :");
+  scanf("%d",&nbr);
+  char* information[7];
+  printf("Quelles sont les informations que vous possédez?");
+  switch(nbr) {
+    case 1 :
+      sscanf(information,"%s", information[0]);
+      break;
+    case 2 :
+      sscanf(information,"%s,%s", information[0], information[1]);
+    case 3 :
+      sscanf(information,"%s,%s,%s", information[0], information[1], information[2]);
+    case 4 :
+      sscanf(information,"%s,%s,%s,%s", information[0], information[1], information[2], information[3]);
+    case 5 :
+      sscanf(information,"%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4]);
+    case 6 :
+      sscanf(information,"%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5]);
+    case 7 :
+      sscanf(information,"%s,%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5], information[6]);
+  }
+
+
+
+}
+
+void ferrors(FILE* fp){
+  if (fopen(fp)==NULL) {
+    printf("Erreur d'ouverture fichier.");
+    return 0;
+  }
+  else{
+    printf("Fichier ouvert avec succès.");
+    return 1;
+  }
+}
+
+void ferrorsclose(FILE *fp){
+  if (fopen(fp)!=EOF) {
+    printf("Fermeture du fichier réussie.");
+    return 1;
+  }
+  else {
+    printf("Erreur de fermeture du fichier");
+    return 0;
+  }
+}
+
+
 /*
 void sift(int node, int n) {
    int k = node;

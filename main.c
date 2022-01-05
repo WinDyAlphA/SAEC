@@ -32,7 +32,7 @@ void clear(void);
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 
-int main(int argc, char **argv) {
+/* int main(int argc, char **argv) {
     FILE *fp = fopen(chemin,"a+");
     struct data x;
     error_fopen(fp);
@@ -40,8 +40,15 @@ int main(int argc, char **argv) {
         for (int i = 2; i <= argc; i++) {
             switch (argv[i][0]) {
                 case 'a' : //add
+                    if (argv[i]=='add') {
+                        add();
+                    }
+                    if (argv[i]=='associate') {
+                        associate;
+                    }
                     break;
                 case 'd' : //delete
+                    delete(argv[i]);
                     break;
                 case 'm' : //modify
                     research(fp);
@@ -51,10 +58,13 @@ int main(int argc, char **argv) {
                     //associate();
                     print();
                     break;
-                case 'r' : //research
-                    break;
-                case 's' : //sort
-
+                case 's' : //search
+                    if (argv[i]=='search') {
+                        search();
+                    }
+                    if (argv[i]=='sort') {
+                        sort();
+                    }
                     break;
             }
         }
@@ -67,7 +77,14 @@ int main(int argc, char **argv) {
         return 0;
     }
 }
+ */
 
+int main(){
+        int tab;
+        menu();
+        error_fclose(fp);
+        return 0;
+}
 /*void associate(FILE *fp, struct data x) {
     int i;
     while (fopen(fp) = !feof)
