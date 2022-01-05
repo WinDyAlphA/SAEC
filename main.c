@@ -31,8 +31,10 @@ void clear(void);
 
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
-
-int main(int argc, char **argv) {
+int main(){
+    menu();
+}
+/*int main(int argc, char **argv) {
     FILE *fp = fopen(chemin,"a+");
     struct data x;
     error_fopen(fp);
@@ -67,7 +69,7 @@ int main(int argc, char **argv) {
         return 0;
     }
 }
-
+*/
 /*void associate(FILE *fp, struct data x) {
     int i;
     while (fopen(fp) = !feof)
