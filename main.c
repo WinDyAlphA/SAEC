@@ -34,7 +34,7 @@ void clear(void);
 int main(){
     menu();
 }
-/*int main(int argc, char **argv) {
+/*int adgzgaz(int argc, char **argv) {
     FILE *fp = fopen(chemin,"a+");
     struct data x;
     error_fopen(fp);
@@ -68,8 +68,8 @@ int main(){
         error_fclose(fp);
         return 0;
     }
-}
-*/
+}*/
+
 /*void associate(FILE *fp, struct data x) {
     int i;
     while (fopen(fp) = !feof)

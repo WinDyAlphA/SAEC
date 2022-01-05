@@ -1,12 +1,21 @@
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <string.h>
+
 #include <time.h>
+
 #include <assert.h>
+
 #include <stdbool.h>
+
 #include "func.h"
+
 #include "useful.h"
 
 #define MAXCHAR 1024
@@ -22,216 +31,238 @@ void add(void);
 /*void sift(int, int);
 void heap_sort(int);
 int srch_dicho(int);*/
-/*void srch_seq(char *x,struct data *datarecord); */
+/*void srch_seq(char * x, struct data * datarecord);*/
+void finds(struct data * p[]);
+int espace(char row[MAXCHAR]);
+
 void structure(void);
 
-
-
 typedef struct data {
-    char prenom[30];
-    char nom[30];
-    char ville[20];
-    char codePostal[6];
-    char numero[20];
-    char mail[50];
-    char metier[20];
-}pers;
+  char prenom[30];
+  char nom[30];
+  char ville[20];
+  char codePostal[6];
+  char numero[20];
+  char mail[50];
+  char metier[20];
+}
+pers;
 
-char *tab[PERSONNE];
-void finds(struct data *p[]);
+char * tab[PERSONNE];
 
-void afficher(){
-    FILE *fp = fopen(chemin,"r");
-    char row[MAXCHAR];
+void afficher() {
+  FILE * fp = fopen(chemin, "r");
+  char row[MAXCHAR];
 
-    if  (fp == NULL){
-        perror("error");
-        exit(1);
+  if (fp == NULL) {
+    perror("error");
+    exit(1);
+  }
+
+  while (fgets(row, sizeof(row), fp)) {
+    char * token;
+    token = strtok(row, ";");
+
+    while (token != NULL) {
+      printf("%s", token);
+      token = strtok(NULL, ";");
+      printf(" ");
     }
-
-    while (fgets(row, sizeof(row), fp)){
-        char *token;
-        token = strtok(row, ";");
-
-        while (token != NULL){
-            printf("%s", token);
-            token = strtok(NULL, ";");
-            printf(" ");
-        }
-        printf("\n");
+    printf("\n");
   }
 }
-void structure(){
-    struct data datarecord[500];
-    struct data *pdata = &datarecord[0];
-    pdata = datarecord;
-    struct data *pp[500];
-    for (int n=0;n<500;n++){
-        pp[n] = malloc(sizeof(struct data));
-    }
-    struct data *(*p)[] = &pp;
-    
-    
-    
-    
-  int i =0;
-  int j=0;
-    FILE *fp = fopen(chemin,"r");
-    char row[MAXCHAR];
 
-    if  (fp == NULL){
-        perror("error");
-        exit(1);
-    }
-    while (fgets(row, sizeof(row), fp)){
-        
-        char *token;
-        token = strtok(row, ";");
-        
-        
-        while (token != NULL){
-            switch(i){
-                case 0:
-                    strcpy(datarecord[j].prenom,token);
-                    break;
-                case 1:
-                    strcpy(datarecord[j].nom,token);
-                    break;
-                case 2:
-                    strcpy(datarecord[j].ville,token);
-                    break;
-                case 3:
-                    strcpy(datarecord[j].codePostal,token);
-                    break;
-                case 4:
-                    strcpy(datarecord[j].numero,token);
-                    break;
-                case 5:
-                    strcpy(datarecord[j].mail,token);
-                    break;
-                case 6:
-                    strcpy(datarecord[j].metier,token);
-                    break;
-            }
-            token = strtok(NULL, ";");
-            i++;
-        }
-        i=0;
+void structure() {
+  struct data datarecord[500];
 
-                printf("\n");
-                printf("\n");
-                printf("%s",datarecord[2].nom);
-                printf("\n");
-                printf("\n");
-                j++;
-                
-                
-                    
-            }
-            for (int b=0;b<4;b++){
-                (*p)[b]=&(pdata[b]);
-            }
-            for(int z=0;z<4;z++){
-                
-                printf("%s %s %s %s \n",(*pdata).nom,pdata->prenom,pdata->ville,pdata->numero);
-                printf("%s %s %s %s \n",(*p)[z]->nom,(*p)[z]->prenom,(*p)[z]->ville,(*p)[z]->numero);
-                pdata++;
-            }
-            char mots[21];
-    printf("saisissez votre recherche");
-            fgets(mots,20,stdin);
-            char *mot= &mots[0];
-            
-            finds(*p);
-            
+  struct data * pp[500];
+  for (int n = 0; n < 500; n++) {
+    pp[n] = malloc(sizeof(struct data));
+  }
+  struct data * ( * p)[] = & pp;
+
+  int i = 0;
+  int j = 0;
+  FILE * fp = fopen(chemin, "r");
+  char row[MAXCHAR];
+
+  if (fp == NULL) {
+    perror("error");
+    exit(1);
+  }
+  while (fgets(row, sizeof(row), fp)) {
+
+    char * token;
+    if (espace(row) == true) {
+
+    }
+    token = strtok(row, ";");
+
+    while (token != NULL) {
+      switch (i) {
+      case 0:
+        strcpy(datarecord[j].prenom, token);
+        break;
+      case 1:
+        strcpy(datarecord[j].nom, token);
+        break;
+      case 2:
+        strcpy(datarecord[j].ville, token);
+        break;
+      case 3:
+        strcpy(datarecord[j].codePostal, token);
+        break;
+      case 4:
+        strcpy(datarecord[j].numero, token);
+        break;
+      case 5:
+        strcpy(datarecord[j].mail, token);
+        break;
+      case 6:
+        strcpy(datarecord[j].metier, token);
+        break;
+      }
+      token = strtok(NULL, ";");
+      i++;
+    }
+    i = 0;
+
+    printf("\n");
+    printf("\n");
+    printf("%s", datarecord[2].nom);
+    printf("\n");
+    printf("\n");
+    j++;
+
+  }
+  for (int b = 0; b < 4; b++) {
+    ( * p)[b] = & ( * ( & datarecord[b]));
+  }
+  for (int z = 0; z < 4; z++) {
+    printf("%s %s %s %s \n", ( * p)[z] -> nom, ( * p)[z] -> prenom, ( * p)[z] -> ville, ( * p)[z] -> numero);
+  }
+  char mots[21];
+  printf("saisissez votre recherche");
+  fgets(mots, 20, stdin);
+  char * mot = & mots[0];
+
+  finds( * p);
+
 }
 
-
-
-void finds(struct data *p[]){
-    for(int z=0;z<4;z++){
-        printf("%s %s %s %s \n",(*p)[z].nom,(*p)[z].prenom,(*p)[z].ville,(*p)[z].numero);
-    }
+void finds(struct data * p[]) {
+  for (int z = 0; z < 4; z++) {
+    printf("%s %s %s %s \n", ( * p)[z].nom, ( * p)[z].prenom, ( * p)[z].ville, ( * p)[z].numero);
+  }
 }
 
+int espace(char row[MAXCHAR]) {
+  for (int i = 0; i < MAXCHAR; i++) {
+    if (row[i] == row[i + 1] && row[i] == ';') {
+      for (int j = 0; j < (MAXCHAR - i); j++) {
+        row[MAXCHAR - (j + 1)] = row[MAXCHAR - j];
+        row[i + 1] = ' ';
 
+      }
+    }
 
+  }
+  return 1;
+}
 
-    
+void menu() {
+  clear();
+  char c = '0';
+  printf("\n\t\t\t   **********-- M E N U --**********");
+  printf("\n\t\t\t\tQue voulez vous faire ?\n");
+  printf("\t\n 1 - Ajouter un client");
+  printf("\t\n 2 - Modifier les donnees d'un client");
+  printf("\t\n 3 - Supprimer un client");
+  printf("\t\n 4 - Afficher les donnees-client");
+  printf("\t\n 5 - Rechercher une caracterisque client");
+  printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune");
+  printf("\t\n 7 - Rechercher ou afficher les donnees d'un client ");
+  printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
+  printf("\t\n 9 - Sauvegarder les donnees d'un fichier \n");
+  scanf("%s", & c);
+  switch (c) {
+  case '1':
+    add();
+    printf("test");
+    menu();
+  case '2':
+    printf("test");
+    menu();
+  case '3':
+    printf("test");
+    menu();
+  case '4':
 
-void menu(){
+    menu();
+  case '5':
     structure();
-    clear();
-    char c='0';
-    printf("\n\t\t\t   **********-- M E N U --**********");
-    printf("\n\t\t\t\tQue voulez vous faire ?\n");
-    printf("\t\n 1 - Ajouter un client");
-    printf("\t\n 2 - Modifier les donnees d'un client");
-    printf("\t\n 3 - Supprimer un client");
-    printf("\t\n 4 - Afficher les donnees-client");
-    printf("\t\n 5 - Rechercher une caracterisque client");
-    printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune");
-    printf("\t\n 7 - Rechercher ou afficher les donnees d'un client ");
-    printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
-    printf("\t\n 9 - Sauvegarder les donnees d'un fichier \n");
-    scanf("%s",&c);
-    switch(c)
-       {
-           case '1':
-           add();
-           printf("test");
-            menu();
-           case '2':
-           printf("test");
-           menu();
-           case '3':
-           printf("test");
-           menu();
-           case '4':
-           
-           menu();
-           case '5':
-           /*srch();*/
-           printf("test");
-           menu();
-           case '6':
-           printf("test");
-           menu();
-            case '7':
-            printf("test");
-            menu();
-            case '8':
-            printf("test");
-            menu();
-           case '9':
-            printf("test");
-            menu();
-           case '#':
-            printf("Sortie du programme.");
-            exit(1);
-           default:
-            printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini.");
-            menu();
-       }
+    printf("test");
+    menu();
+  case '6':
+    printf("test");
+    menu();
+  case '7':
+    printf("test");
+    menu();
+  case '8':
+    printf("test");
+    menu();
+  case '9':
+    printf("test");
+    menu();
+  case '#':
+    printf("Sortie du programme.");
+    exit(1);
+  default:
+    printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini.");
+    menu();
+  }
 }
 
-void add(){
-  char nom[50] = {"nom"};
-  char prenom[50] = {"prenom"};
-  char ville[50] = {"ville"};
-  char cdePostal[50] = {"cdePostal"};
-  char numero[50] = {"numero"};
-  char mail[50] = {"mail"};
-  char metier[50] = {"metier"};
-  char *tab[7] = { nom, prenom, ville, cdePostal, numero, mail, metier};
-  char *add[7];
-  for (int i=0; i<7; i++){
-    printf("veuillez inserer le %s de la personne :\n",tab[i]);
+void add() {
+  char nom[50] = {
+    "nom"
+  };
+  char prenom[50] = {
+    "prenom"
+  };
+  char ville[50] = {
+    "ville"
+  };
+  char cdePostal[50] = {
+    "cdePostal"
+  };
+  char numero[50] = {
+    "numero"
+  };
+  char mail[50] = {
+    "mail"
+  };
+  char metier[50] = {
+    "metier"
+  };
+  char * tab[7] = {
+    nom,
+    prenom,
+    ville,
+    cdePostal,
+    numero,
+    mail,
+    metier
+  };
+  char * add[7];
+  for (int i = 0; i < 7; i++) {
+    printf("veuillez inserer le %s de la personne :\n", tab[i]);
     fflush(stdin);
-    fgets(tab[i],50,stdin);
+    fgets(tab[i], 50, stdin);
   }
-  for (int i=0; i<7; i++){
-    printf("%s : \n",tab[i]);
+  for (int i = 0; i < 7; i++) {
+    printf("%s : \n", tab[i]);
   }
 }
 /*
@@ -283,27 +314,25 @@ int srch_dicho(int x) {
     return -1;
 }
 */
-/*void srch(){
+void srch() {
   printf("Par quel élément souhaitez vous Rechercher ?");
   int c = 0;
   printf("par numero\n");
   printf("par nom\n");
   printf("par e-mail\n");
-  char *x;
-    fgets(x,12,stdin);
-      srch_seq(x,struct data *datarecord);
-
+  char * x;
+  fgets(x, 12, stdin);
+  srch_seq(x, struct data * datarecord);
 
 }
 
-void srch_seq(char *x,struct data *datarecord) {
+/*void srch_seq(char * x, struct data * datarecord) {
 
-      for (int y=0;y<PERSONNE;y++){
-        for (int i; i < 12; i++) {
-            if (datarecord[y].numero[i]==x[i]) {
-                printf("%c",datarecord[y].nom[i]);
-              }
-            }
-        }
+  for (int y = 0; y < PERSONNE; y++) {
+    for (int i; i < 12; i++) {
+      if (datarecord[y].numero[i] == x[i]) {
+        printf("%c", datarecord[y].nom[i]);
+      }
     }
-*/
+  }
+} */
