@@ -15,16 +15,18 @@
 
 #define chemin "annuaire5000.csv"
 
-void afficher(void);
-void menu(void);
-void ajouter(void);
+/* void afficher(void); */
+void menu(FILE *);
+/* void ajouter(void); */
 void add(void);
 /*void sift(int, int);
 void heap_sort(int);
 int srch_dicho(int);*/
-void srch_seq(char *x,struct data *datarecord); 
+/* void srch_seq(char *x,struct data *datarecord); 
 void srch(void);
-void structure(void);
+void structure(void); */
+int ferrors(FILE *);
+int ferrorsclose(FILE *);
 
 
 typedef struct data {
@@ -37,10 +39,10 @@ typedef struct data {
     char metier[20];
 }pers;
 
-char *tab[PERSONNE];
+/* char *tab[PERSONNE]; */
 
 
-void afficher(){
+/* void afficher(){
     FILE *fp = fopen(chemin,"r");
     char row[MAXCHAR];
 
@@ -60,8 +62,8 @@ void afficher(){
         }
         printf("\n");
   }
-}
-void structure(){
+} */
+/* void structure(){
   struct data datarecord[500];
   struct data *pdata = NULL;
   pdata = datarecord;
@@ -133,21 +135,13 @@ void structure(){
             
 }
 
-
-
 void finds(struct data *p[]){
     for(int z=0;z<4;z++){
         printf("%s %s %s %s \n",(*p)[z].nom,(*p)[z].prenom,(*p)[z].ville,(*p)[z].numero);
     }
-}
+} */
 
-
-
-
-    
-
-void menu(){
-    structure();
+void menu(FILE *fp){
     clear();
     char c='0';
     printf("\n\t\t\t   **********-- M E N U --**********");
@@ -160,49 +154,51 @@ void menu(){
     printf("\t\n 6 - Afficher la liste des clients repondant a une caracteristique commune");
     printf("\t\n 7 - Rechercher ou afficher les donnees d'un client ");
     printf("\t\n 8 - Afficher la liste des clients et le nombre de clients ayant des informations manquantes ");
-    printf("\t\n 9 - Sauvegarder les donnees d'un fichier \n");
+    printf("\t\n 9 - Sauvegarder les donnees d'un fichier ");
+    printf("\t\n # - Quitter le programme \n");
     scanf("%s",&c);
     switch(c)
        {
            case '1':
-           add();
            printf("test");
-            menu();
+            menu(fp);
            case '2':
            printf("test");
-           menu();
+           menu(fp);
            case '3':
            printf("test");
-           menu();
+           menu(fp);
            case '4':
-           
-           menu();
-           case '5':
-           srch();
            printf("test");
-           menu();
+           menu(fp);
+           case '5':
+           printf("test");
+           menu(fp);
            case '6':
            printf("test");
-           menu();
+           menu(fp);
             case '7':
             printf("test");
-            menu();
+            menu(fp);
             case '8':
             printf("test");
-            menu();
+            menu(fp);
            case '9':
             printf("test");
-            menu();
+            menu(fp);
            case '#':
-            printf("Sortie du programme.");
+            printf("Sortie du programme.\n");
+            ferrorsclose(fp);
             exit(1);
            default:
-            printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini.");
-            menu();
+            printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini. Rentrez un caractère pour continuer.");
+            scanf("%s");
+            menu(fp);
        }
 }
 
-void add(){
+void add(FILE *fp){
+  fseek(SEEK_END, fp);
   char nom[50] = {"nom"};
   char prenom[50] = {"prenom"};
   char ville[50] = {"ville"};
@@ -227,8 +223,9 @@ void search(FILE* fp){
   printf("Combien d'informations voulez vous rechercher (7 infos disponibles au total) :");
   scanf("%d",&nbr);
   char* information[7];
-  printf("Quelles sont les informations que vous possédez?");
-  switch(nbr) {
+  printf("Rentrez les informations que vous avez sous la forme nombre:nombre:(...)");
+  printf("")
+  switch(nbr){
     case 1 :
       sscanf(information,"%s", information[0]);
       break;
@@ -245,32 +242,29 @@ void search(FILE* fp){
     case 7 :
       sscanf(information,"%s,%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5], information[6]);
   }
+} */
 
-
-
-}
-
-void ferrors(FILE* fp){
-  if (fopen(fp)==NULL) {
-    printf("Erreur d'ouverture fichier.");
-    return 0;
+int ferrors(FILE* fp){
+  if (fp==NULL) {
+    printf("Erreur d'ouverture fichier.\n");
+    return 1;
   }
   else{
-    printf("Fichier ouvert avec succès.");
-    return 1;
-  }
-}
-
-void ferrorsclose(FILE *fp){
-  if (fopen(fp)!=EOF) {
-    printf("Fermeture du fichier réussie.");
-    return 1;
-  }
-  else {
-    printf("Erreur de fermeture du fichier");
+    printf("Fichier ouvert avec succes.\n");
     return 0;
   }
 }
+
+int ferrorsclose(FILE *fp){
+  if (fclose(fp)!=EOF) {
+    printf("Fermeture du fichier reussie.\n");
+    return 0;
+  }
+  else {
+    printf("Erreur de fermeture du fichier.\n");
+    return 1;
+  }
+} 
 
 
 /*
@@ -322,7 +316,7 @@ int srch_dicho(int x) {
     return -1;
 }
 */
-void srch(){
+/* void srch(){
   printf("Par quel élément souhaitez vous Rechercher ?");
   int c = 0;
   printf("par numero\n");
@@ -331,8 +325,6 @@ void srch(){
   char *x;
     fgets(x,12,stdin);
       srch_seq(x,struct data *datarecord);
-
-
 }
 
 void srch_seq(char *x,struct data *datarecord) {
@@ -342,6 +334,6 @@ void srch_seq(char *x,struct data *datarecord) {
             if (datarecord[y].numero[i]==x[i]) {
                 printf("%c",datarecord[y].nom[i]);
               }
-            }
         }
-    }
+      }
+} */

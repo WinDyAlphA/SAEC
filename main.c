@@ -14,7 +14,7 @@
 #define chemin "annuaire5000.csv"
 
 void afficher(void);
-void menu(void);
+void menu(FILE *);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
@@ -80,9 +80,12 @@ void clear(void);
  */
 
 int main(){
-        int tab;
-        menu();
-        error_fclose(fp);
+        scanf("");
+        FILE *fp = fopen("annuaire500.csv","a+");
+        if (ferrors(fp)==1) {
+            return 1;
+        }
+        menu(fp);
         return 0;
 }
 /*void associate(FILE *fp, struct data x) {

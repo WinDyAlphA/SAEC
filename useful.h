@@ -5,10 +5,12 @@
 struct data;
 
 void afficher(void);
-void menu(void);
+void menu(FILE *);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
+int ferrors(FILE *);
+int ferrorsclose(FILE *);
 
 /*
 void sift(int, int);

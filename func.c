@@ -15,17 +15,14 @@
 #define chemin "annuaire5000.csv"
 
 void clear(void);
-/*
 void permute(int *, int *);
-*/
+
 void clear () {
-    system("clear");
+    system("cls");
 }
-/*
+
 void permute(int* i, int* j) {
     int tmp = *j;
     *j = *i;
     *i = tmp;
 }
-
-*/
