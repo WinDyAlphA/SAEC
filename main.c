@@ -32,7 +32,9 @@ void clear(void);
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 int main(){
-    menu();
+    struct data* Client[500];
+    structure(Client);
+    menu(Client);
 }
 /*int adgzgaz(int argc, char **argv) {
     FILE *fp = fopen(chemin,"a+");
