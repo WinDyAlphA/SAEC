@@ -15,6 +15,7 @@
 
 void afficher(void);
 void menu(struct data (*p)[]);
+void menu(FILE *);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);

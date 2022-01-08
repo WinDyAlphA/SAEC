@@ -23,6 +23,9 @@
 void afficher(void);
 
 void ajouter(void);
+/* void afficher(void); */
+void menu(FILE *);
+/* void ajouter(void); */
 void add(void);
 void afich(void);
 
@@ -31,6 +34,12 @@ int espace(char row[MAXCHAR]);
 /*void sift(int, int);
 void heap_sort(int);
 int srch_dicho(int);*/
+/* void srch_seq(char *x,struct data *datarecord); 
+void srch(void);
+void structure(void); */
+int ferrors(FILE *);
+int ferrorsclose(FILE *);
+
 /*void srch_seq(char *x,struct data *datarecord); */
 struct data;
 
@@ -291,8 +300,9 @@ void search(FILE* fp){
   printf("Combien d'informations voulez vous rechercher (7 infos disponibles au total) :");
   scanf("%d",&nbr);
   char* information[7];
-  printf("Quelles sont les informations que vous possédez?");
-  switch(nbr) {
+  printf("Rentrez les informations que vous avez sous la forme nombre:nombre:(...)");
+  printf("")
+  switch(nbr){
     case 1 :
       sscanf(information,"%s", information[0]);
       break;
@@ -309,34 +319,31 @@ void search(FILE* fp){
     case 7 :
       sscanf(information,"%s,%s,%s,%s,%s,%s,%s", information[0], information[1], information[2], information[3], information[4], information[5], information[6]);
   }
+} */
 
-
-
-}
-
-void ferrors(FILE* fp){
-  if (fopen(fp)==NULL) {
-    printf("Erreur d'ouverture fichier.");
-    return 0;
+int ferrors(FILE* fp){
+  if (fp==NULL) {
+    printf("Erreur d'ouverture fichier.\n");
+    return 1;
   }
   else{
-    printf("Fichier ouvert avec succès.");
-    return 1;
-  }
-}
-
-void ferrorsclose(FILE *fp){
-  if (fopen(fp)!=EOF) {
-    printf("Fermeture du fichier réussie.");
-    return 1;
-  }
-  else {
-    printf("Erreur de fermeture du fichier");
+    printf("Fichier ouvert avec succes.\n");
     return 0;
   }
 }
 
-*/
+int ferrorsclose(FILE *fp){
+  if (fclose(fp)!=EOF) {
+    printf("Fermeture du fichier reussie.\n");
+    return 0;
+  }
+  else {
+    printf("Erreur de fermeture du fichier.\n");
+    return 1;
+  }
+} 
+
+
 /*
 
 void sift(int node, int n) {
@@ -395,8 +402,6 @@ int srch_dicho(int x) {
   char *x;
     fgets(x,12,stdin);
       srch_seq(x,struct data *datarecord);
-
-
 }
 
 void srch_seq(char *x,struct data *datarecord) {
@@ -406,7 +411,7 @@ void srch_seq(char *x,struct data *datarecord) {
             if (datarecord[y].numero[i]==x[i]) {
                 printf("%c",datarecord[y].nom[i]);
               }
-            }
         }
+
     }
 */
