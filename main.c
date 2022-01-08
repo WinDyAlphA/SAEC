@@ -14,10 +14,11 @@
 #define chemin "annuaire5000.csv"
 
 void afficher(void);
-void menu(void);
+void menu(struct data (*p)[]);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
+void structure(struct data (*p)[]);
 /*void sift(int, int);
 void heap_sort(int);
 int srch_dicho(int);
@@ -32,9 +33,16 @@ void clear(void);
 // faire une fonction qui compte les ligne et faire
 // tab[nligne].nom[pos]=str
 int main(){
-    struct data* Client[500];
-    structure(Client);
-    menu(Client);
+    struct data *arr[500];
+
+    for (int n=0;n<500;n++){
+        arr[n] = (struct data *) malloc(sizeof(struct data));
+    }
+    struct data *(*p)[] = &arr;
+    
+    structure(&(*p));
+    menu(&(*p));
+    return 1;
 }
 /*int adgzgaz(int argc, char **argv) {
     FILE *fp = fopen(chemin,"a+");

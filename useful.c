@@ -21,11 +21,11 @@
 #define chemin "annuaire5000.csv"
 
 void afficher(void);
-void menu(void);
+
 void ajouter(void);
 void add(void);
 void afich(void);
-void structure(struct data *(*p)[]);
+
 void compare(char a[], char b[]);
 int espace(char row[MAXCHAR]);
 /*void sift(int, int);
@@ -44,8 +44,14 @@ struct data {
   char metier[20];
 };
 
+
 char * tab[PERSONNE];
 void finds(struct data * p[]);
+void menu(struct data (*p)[]);
+void structure(struct data (*p)[]);
+void srch(struct data *p[]);
+void affichepers(void);
+
 
 void afficher() {
   FILE * fp = fopen(chemin, "r");
@@ -68,13 +74,9 @@ void afficher() {
     printf("\n");
   }
 }
-void structure(struct data *p[]){
-    struct data datarecord[500];
 
-    for (int n=0;n<500;n++){
-        p[n] = (struct data *) malloc(sizeof(struct data));
-    }
-    
+void structure(struct data (*p)[]){
+    struct data datarecord[500];
     
     
     
@@ -130,10 +132,12 @@ void structure(struct data *p[]){
                     
             }
             for (int b=0;b<4;b++){
-                (*p)[b]=&(*(&datarecord[b]));
+                (*p)[b]=(*(&datarecord[b]));
             }
             
 }
+
+
 
 void finds(struct data *p[]){
     char x[21];
@@ -157,7 +161,7 @@ void finds(struct data *p[]){
     
 }
 
-void srch(){
+void srch(struct data *p[]){
   printf("Par quel élément souhaitez vous Rechercher ?");
   int c = 0;
   printf("par numero\n");
@@ -165,7 +169,7 @@ void srch(){
   printf("par e-mail\n");
   char *x;
     fgets(x,12,stdin);
-      finds(*p);
+      finds(p);
 }
 int espace(char row[MAXCHAR]){
     for (int i=0;i<MAXCHAR;i++){
@@ -180,8 +184,9 @@ int espace(char row[MAXCHAR]){
     }
     return 0;
 }
+    
 
-void menu() {
+void menu(struct data (*p)[]) {
 
   char c = '0';
   printf("\n\t\t\t   **********-- M E N U --**********");
@@ -200,39 +205,39 @@ void menu() {
   case '1':
     add();
     printf("test");
-    menu();
+    menu(p);
   case '2':
     printf("test");
-    menu();
+    menu(p);
   case '3':
     printf("test");
-    menu();
+    menu(p);
   case '4':
-
-    menu();
+          affichepers();
+    menu(p);
   case '5':
-    structure();
+    structure(&(*p));
     /*srch();*/
     printf("test");
-    menu();
+    menu(p);
   case '6':
     printf("test");
-    menu();
+    menu(p);
   case '7':
     printf("test");
-    menu();
+    menu(p);
   case '8':
     printf("test");
-    menu();
+    menu(p);
   case '9':
     printf("test");
-    menu();
+    menu(p);
   case '#':
     printf("Sortie du programme.");
     exit(1);
   default:
     printf("Erreur, rentrez un nombre valide ou un '#' si vous avez fini.");
-    menu();
+    menu(p);
   }
 }
 
@@ -276,6 +281,9 @@ void add() {
   for (int i = 0; i < 7; i++) {
     printf("%s : \n", tab[i]);
   }
+}
+void affichepers(){
+    
 }
 /*
 void search(FILE* fp){

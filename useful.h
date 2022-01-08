@@ -5,10 +5,13 @@
 struct data;
 
 void afficher(void);
-void menu(void);
+void menu(struct data (*p)[]);
 void ajouter(void);
 void ajouterfpf(void);
 void affichermenu(void);
+void srch(struct data *p[]);
+void finds(struct data *p[]);
+void structure(struct data (*p)[]);
 
 /*
 void sift(int, int);
